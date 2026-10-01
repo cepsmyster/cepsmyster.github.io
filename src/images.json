@@ -139,38 +139,6 @@
   "w": 1080,
   "h": 1920
  },
- "oncology-presentation/cover": {
-  "w": 2000,
-  "h": 1415
- },
- "oncology-presentation/reception": {
-  "w": 2000,
-  "h": 1415
- },
- "oncology-presentation/ward": {
-  "w": 2000,
-  "h": 1415
- },
- "oncology-presentation/room": {
-  "w": 2000,
-  "h": 1415
- },
- "oncology-presentation/lounge": {
-  "w": 2000,
-  "h": 1415
- },
- "oncology-presentation/bed": {
-  "w": 2000,
-  "h": 1415
- },
- "oncology-presentation/detail": {
-  "w": 2000,
-  "h": 1415
- },
- "oncology-presentation/door": {
-  "w": 2000,
-  "h": 1415
- },
  "repc-signage/grand": {
   "w": 2000,
   "h": 1305

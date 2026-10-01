@@ -39,10 +39,6 @@ export const IMAGES = {
   'ips-2026': {
     countdown: { src: `${WORK}/Social media/IPS 2026.png` },
   },
-  'oncology-presentation': {
-    cover: pdf('hosp-01'), reception: pdf('hosp-03'), ward: pdf('hosp-04'), room: pdf('hosp-05'),
-    lounge: pdf('hosp-07'), bed: pdf('hosp-10'), detail: pdf('hosp-12'), door: pdf('hosp-13'),
-  },
   'repc-signage': {
     grand: pdf('repc-01'), soon: pdf('repc-02'), navy: pdf('repc-03'), navy2: pdf('repc-04'),
     site: { src: `${WORK}/Prints/Signage/WhatsApp Image 2026-06-30 at 6.35.23 PM.jpeg` },
