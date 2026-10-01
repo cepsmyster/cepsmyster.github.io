@@ -259,24 +259,41 @@ const home = page({
   cls: 'home',
   before: loader,
   body: `
-<section class="hero" aria-labelledby="hero-name">
-  <div class="hero-top">
-    <p>Portfolio <em>©2024—2026</em></p>
-    <p>Brands, books, campaigns,<br>signage, decks and web</p>
-    <p class="hero-avail"><i></i>Open to new projects</p>
+<section class="hero desk" aria-labelledby="hero-name">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="folder" viewBox="0 0 64 52"><path d="M3 9a5 5 0 0 1 5-5h15l5 5h28a5 5 0 0 1 5 5v2H3z" fill="#69b2ff"/><rect x="3" y="13" width="58" height="36" rx="5" fill="#8cc5ff"/><rect x="3" y="13" width="58" height="36" rx="5" fill="url(#fg)"/><linearGradient id="fg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a6d3ff"/><stop offset="1" stop-color="#6fb4fb"/></linearGradient></symbol>
+  </svg>
+
+  <div class="desk-bits" aria-hidden="true">
+    ${[['Clients', 6, 22], ['Brand_Final', 13, 62], ['Renders', 84, 30], ['Decks_2026', 74, 78], ['Fonts', 30, 86], ['Archive', 58, 12]].map(([n, x, y]) => `<span class="folder" style="left:${x}%;top:${y}%" data-depth=".25"><svg><use href="#folder"/></svg><b>${n}</b></span>`).join('')}
+    ${[['Ai', '#330000', '#ff9a00', 22, 10], ['Ps', '#001e36', '#31a8ff', 41, 80], ['Id', '#49021f', '#ff3366', 88, 52], ['Ae', '#00005b', '#9999ff', 66, 90], ['Pr', '#00005b', '#9999ff', 9, 48], ['Lr', '#001a36', '#31a8ff', 50, 6]].map(([t, bg, fg, x, y]) => `<span class="adobe" style="left:${x}%;top:${y}%;--bg:${bg};--fg:${fg}" data-depth=".35">${t}</span>`).join('')}
   </div>
-  <h1 class="hero-name" id="hero-name" aria-label="${SITE.name}">
-    <span class="hn-line hn-1" aria-hidden="true"><span class="hn-word">Carl</span><span class="hn-ai" aria-hidden="true">${AI_WINDOW}</span></span>
-    <span class="hn-line hn-2" aria-hidden="true"><span class="hn-ai hn-ai2" aria-hidden="true">${AI_TYPE}</span><span class="hn-word">Serafin</span></span>
-    <span class="hn-path" aria-hidden="true">
-      <svg viewBox="0 0 1000 400" preserveAspectRatio="none"><path d="M20 330 C 180 120, 330 380, 500 210 S 820 40, 980 150"/><line x1="500" y1="210" x2="390" y2="330"/><line x1="500" y1="210" x2="610" y2="90"/></svg>
-      <i class="hn-a" style="left:2%;top:82.5%"></i><i class="hn-a" style="left:50%;top:52.5%"></i><i class="hn-a" style="left:98%;top:37.5%"></i>
-      <i class="hn-h" style="left:39%;top:82.5%"></i><i class="hn-h" style="left:61%;top:22.5%"></i>
+
+  <svg class="desk-cable" viewBox="0 0 1400 900" preserveAspectRatio="none" aria-hidden="true"><path d="M240 470 C 280 700, 420 830, 520 790 S 620 650, 720 700 S 960 900, 1130 790"/></svg>
+
+  <img class="obj obj-xm5" src="assets/hero/xm5.svg" alt="" data-depth="1.2">
+  <img class="obj obj-kb" src="assets/hero/keyboard.svg" alt="" data-depth=".9">
+  <img class="obj obj-watch" src="assets/hero/watch.svg" alt="" data-depth="1.4">
+  <img class="obj obj-belkin" src="assets/hero/belkin.svg" alt="" data-depth="1">
+
+  <div class="desk-title">
+    <span class="dt-guide dt-gh dt-gh1" aria-hidden="true"></span><span class="dt-guide dt-gh dt-gh2" aria-hidden="true"></span><span class="dt-guide dt-gh dt-gh3" aria-hidden="true"></span>
+    <span class="dt-guide dt-gv dt-gv1" aria-hidden="true"></span><span class="dt-guide dt-gv dt-gv2" aria-hidden="true"></span>
+    <span class="dt-small" aria-hidden="true">Graphic</span>
+    <h1 id="hero-name" aria-label="${SITE.name}, graphic design portfolio"><span class="dt-l1" aria-hidden="true">Design</span><span class="dt-l2" aria-hidden="true">Portfolio</span></h1>
+    <span class="dt-tag" aria-hidden="true">${SITE.name}</span>
+    <span class="dt-year" aria-hidden="true">2026</span>
+    <span class="dt-box" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+    <span class="dt-measure" aria-hidden="true">W: 1240 px &nbsp; H: 486 px</span>
+    <span class="dt-pen" aria-hidden="true">
+      <svg viewBox="0 0 220 120"><path class="dt-pen-path" pathLength="1" d="M6 100 C 40 20, 110 20, 140 64"/><line x1="140" y1="64" x2="112" y2="30"/><line x1="140" y1="64" x2="168" y2="98"/><circle cx="112" cy="30" r="4"/><circle cx="168" cy="98" r="4"/><rect x="1" y="95" width="10" height="10"/><rect x="135" y="59" width="10" height="10"/>
+      <g transform="translate(148 70) rotate(-12)"><path d="M0 0 L16 40 L22 31 L32 39 L39 31 L31 22 L40 16 Z" fill="#2f5bff" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><circle cx="14" cy="14" r="3.4" fill="#fff"/></g></svg>
     </span>
-  </h1>
-  <div class="hero-foot">
+  </div>
+
+  <div class="desk-foot">
     <p class="hero-lead">I design <em>brands</em>, <em>company profiles</em> and <em>pitch decks</em> for the companies building Dubai. Now I build <em>websites</em> too.</p>
-    <a class="hero-scroll" href="#work">Scroll <span>↓</span></a>
+    <div class="desk-meta"><p class="hero-avail"><i></i>Open to new projects</p><a class="hero-scroll" href="#work">Scroll <span>↓</span></a></div>
   </div>
 </section>
 

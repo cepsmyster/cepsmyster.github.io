@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 520">
+<defs>
+  <radialGradient id="cup" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#4a4a4f"/><stop offset=".45" stop-color="#26262a"/><stop offset="1" stop-color="#0d0d0f"/></radialGradient>
+  <radialGradient id="cushion" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#1c1c1f"/><stop offset="1" stop-color="#050506"/></radialGradient>
+  <linearGradient id="band" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3a3e"/><stop offset="1" stop-color="#111113"/></linearGradient>
+  <linearGradient id="arm" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2a2a2d"/><stop offset=".5" stop-color="#55555a"/><stop offset="1" stop-color="#1e1e21"/></linearGradient>
+</defs>
+<path d="M142 300 C 128 132, 214 52, 310 52 S 492 132, 478 300" fill="none" stroke="url(#band)" stroke-width="40" stroke-linecap="round"/>
+<path d="M150 292 C 140 146, 220 72, 310 72 S 480 146, 470 292" fill="none" stroke="#0b0b0c" stroke-width="10" stroke-linecap="round" opacity=".7"/>
+<path d="M136 270 C 132 150, 212 62, 310 60" fill="none" stroke="#6a6a70" stroke-width="2" opacity=".5"/>
+<rect x="126" y="250" width="22" height="80" rx="10" fill="url(#arm)"/>
+<rect x="472" y="250" width="22" height="80" rx="10" fill="url(#arm)"/>
+<g transform="rotate(-9 128 370)">
+  <ellipse cx="128" cy="370" rx="98" ry="132" fill="url(#cup)"/>
+  <ellipse cx="128" cy="370" rx="98" ry="132" fill="none" stroke="#5a5a60" stroke-width="1.5" opacity=".5"/>
+  <ellipse cx="106" cy="328" rx="40" ry="62" fill="#fff" opacity=".05"/>
+  <circle cx="160" cy="300" r="3" fill="#0a0a0b"/><circle cx="168" cy="314" r="2" fill="#0a0a0b"/>
+</g>
+<g transform="rotate(9 492 370)">
+  <ellipse cx="492" cy="370" rx="98" ry="132" fill="url(#cup)"/>
+  <ellipse cx="492" cy="370" rx="98" ry="132" fill="none" stroke="#5a5a60" stroke-width="1.5" opacity=".5"/>
+  <ellipse cx="470" cy="328" rx="40" ry="62" fill="#fff" opacity=".05"/>
+  <rect x="566" y="380" width="6" height="22" rx="3" fill="#0a0a0b"/>
+</g>
+</svg>

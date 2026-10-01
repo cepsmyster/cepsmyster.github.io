@@ -120,6 +120,20 @@
     if (path) path.setAttribute('pathLength', '1');
   }
 
+  // ---------- Desk hero: objects drift with the pointer ----------
+  var desk = document.querySelector('.desk');
+  if (desk && finePointer && !reduce) {
+    var deps = [].slice.call(desk.querySelectorAll('[data-depth]'));
+    desk.addEventListener('mousemove', function (e) {
+      var r = desk.getBoundingClientRect();
+      var nx = (e.clientX - r.left) / r.width - .5, ny = (e.clientY - r.top) / r.height - .5;
+      deps.forEach(function (el) {
+        var d = parseFloat(el.getAttribute('data-depth')) || 1;
+        el.style.translate = (nx * -26 * d).toFixed(1) + 'px ' + (ny * -20 * d).toFixed(1) + 'px';
+      });
+    });
+  }
+
   // ---------- Loader (first visit to the home page in a session) ----------
   var loader = document.querySelector('.loader');
   var start = function () { if (hero) hero.classList.add('is-ready'); };

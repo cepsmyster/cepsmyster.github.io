@@ -42,15 +42,13 @@ For a one-off image you can also export two WebP files at 800 and 1600 px wide b
   one accent colour (Illustrator path blue, `--accent` in `assets/css/styles.css`).
 - **Loader:** on the first visit in a session the home page opens on a black screen where the project covers orbit
   while a counter runs to 100%, then the screen lifts away.
-- **Hero:** the name fills the width (sized in `assets/js/main.js`), a strip of project covers plays next to
-  "Carl", and a blue Bézier path with anchor points draws itself across the name.
+- **Hero:** a flat lay on white with grain and a faint grid: Sony XM5 headphones, a Womier keyboard, an Apple Watch and a Belkin 3-in-1 stand (illustrations in `assets/hero/`, swap them for photo cut-outs with the same names), Mac folders and Adobe app icons, and the "Design Portfolio" title inside an Illustrator selection box with blue guides and a pen-tool path. Objects drift slightly with the pointer.
 - **Pen-tool cursor:** on computers with a mouse the pointer is a pen nib that leaves a fading path with square
   anchor points and handles. Links show the "+" of the Add Anchor Point tool; project images show a "View project"
   label (set with `data-cursor` on any element).
 - **Motion:** headings rise word by word, images uncover as they scroll in, the services strip drifts and speeds up
   with scrolling, and a black panel wipes between pages.
 - **Work grid:** two equal columns of artboards labelled like Illustrator ("01 - Artboard 1"), each full photo on a soft mat. One Mac Illustrator panel per row, alternating sides: Effect menu, Links, Layers, Swatches, Pathfinder, Align, Character (`panelFor` in `src/build.mjs`).
-- **Hero windows:** two small Mac Illustrator windows the height of the capitals: the Pen tool drawing on Artboard 1 next to "Carl", and the Type tool with the Character panel next to "Serafin".
 - **Buttons:** frosted-glass pills (backdrop blur); `.btn-dark` is the version for the black footer.
 - Videos play only while on screen and never with sound. Visitors who turn on "reduce motion" get no loader,
   cursor trail or animation.
