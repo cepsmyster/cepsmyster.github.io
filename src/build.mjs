@@ -182,6 +182,9 @@ const AI_TYPE = `
   </span>
 </span>`;
 
+// Marquee separator: an Illustrator anchor point with its two Bezier handles.
+const ANCHOR = '<svg class="mq-anchor" viewBox="0 0 64 24"><line x1="6" y1="18" x2="58" y2="6"/><circle cx="6" cy="18" r="3.4"/><circle cx="58" cy="6" r="3.4"/><rect x="26" y="6" width="12" height="12"/></svg>';
+
 const loader = `
 <div class="loader" aria-hidden="true">
   <div class="orbit">${covers.map((c, i) => `<img src="${c}" alt="" style="--i:${i}">`).join('')}</div>
@@ -235,7 +238,7 @@ const home = page({
   </div>
 </section>
 
-<div class="marquee" aria-hidden="true"><div class="mq-track">${Array(2).fill(`<span>${ABOUT.fields.map(f => `${esc(f)} <i>✦</i>`).join(' ')}</span>`).join('')}</div></div>
+<div class="marquee" aria-hidden="true"><div class="mq-track">${Array(2).fill(`<span>${ABOUT.fields.map(f => `${esc(f)} ${ANCHOR}`).join(' ')}</span>`).join('')}</div></div>
 
 <section class="work" id="work" aria-labelledby="work-h">
   <div class="sec-head">

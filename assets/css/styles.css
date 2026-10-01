@@ -236,7 +236,10 @@ ul, ol { list-style: none; }
 .marquee { overflow: hidden; border-block: 1px solid var(--line); padding: 14px 0; background: var(--bg); }
 .mq-track { display: flex; width: max-content; will-change: transform; }
 .mq-track span { display: block; white-space: nowrap; font-size: clamp(28px, 4vw, 64px); letter-spacing: -.01em; font-family: var(--display); font-weight: 200; font-optical-sizing: auto; padding-right: .4em; }
-.mq-track i { font-style: normal; color: var(--accent); font-size: .55em; vertical-align: middle; margin: 0 .35em; }
+.mq-anchor { display: inline-block; width: 1.6em; height: .6em; margin: 0 .45em; vertical-align: middle; overflow: visible; }
+.mq-anchor line { stroke: var(--accent); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.mq-anchor circle { fill: var(--accent); }
+.mq-anchor rect { fill: #fff; stroke: var(--accent); stroke-width: 2; vector-effect: non-scaling-stroke; }
 
 /* ---------- Section heads ---------- */
 .sec-head { display: grid; grid-template-columns: 2fr 1fr; align-items: end; gap: 30px; padding: 28vh var(--edge) 12vh; }
