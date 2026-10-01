@@ -187,22 +187,6 @@
   "w": 385,
   "h": 432
  },
- "naresco/posts": {
-  "w": 1240,
-  "h": 285
- },
- "naresco/phone": {
-  "w": 1441,
-  "h": 961
- },
- "proguard-renova360/posts": {
-  "w": 1240,
-  "h": 358
- },
- "proguard-renova360/ads": {
-  "w": 1240,
-  "h": 1060
- },
  "proguard-renova360/profiles": {
   "w": 1240,
   "h": 432
@@ -210,18 +194,6 @@
  "proguard-renova360/renova": {
   "w": 1441,
   "h": 900
- },
- "daytona-properties/ads": {
-  "w": 1241,
-  "h": 325
- },
- "daytona-properties/brochures": {
-  "w": 1240,
-  "h": 432
- },
- "daytona-properties/standee": {
-  "w": 1441,
-  "h": 869
  },
  "world-padel-academy/posts": {
   "w": 920,
@@ -358,5 +330,33 @@
  "tci-company-profile/front": {
   "w": 2000,
   "h": 1415
+ },
+ "naresco/posts": {
+  "w": 2400,
+  "h": 1600
+ },
+ "proguard-renova360/stories": {
+  "w": 2400,
+  "h": 1600
+ },
+ "proguard-renova360/posts": {
+  "w": 2400,
+  "h": 1600
+ },
+ "daytona-properties/valoura": {
+  "w": 2400,
+  "h": 1600
+ },
+ "daytona-properties/pages": {
+  "w": 2400,
+  "h": 1600
+ },
+ "daytona-properties/posts": {
+  "w": 2400,
+  "h": 1600
+ },
+ "daytona-properties/stories": {
+  "w": 2400,
+  "h": 1600
  }
 }

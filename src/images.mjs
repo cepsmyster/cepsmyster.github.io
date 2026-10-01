@@ -66,19 +66,16 @@ export const IMAGES = {
     earthday: be('06', [928, 648, 374, 420]),
   },
   naresco: {
-    posts: be('07', [97, 493, 1206, 277]),
-    phone: be('08'),
+    posts: pdf('naresco-posts'),  // Eid Al Adha and Islamic New Year posts
   },
   'proguard-renova360': {
-    posts: be('09', [89, 452, 1102, 318], 1281),
-    ads: be('09', [89, 978, 1102, 942], 1281),
+    stories: pdf('proguard-stories'), posts: pdf('proguard-posts'),
     profiles: be('10', [97, 185, 1205, 420]),
     renova: be('11', [0, 50, 1400, 874]),
   },
   'daytona-properties': {
-    ads: be('12', [97, 510, 1206, 316]),
-    brochures: be('13', [97, 194, 1205, 420]),
-    standee: be('14'),
+    valoura: pdf('valoura-hero'), pages: pdf('valoura-pages'),  // brochure mockups made from the PDF
+    posts: pdf('daytona-posts'), stories: pdf('daytona-stories'),
   },
   'world-padel-academy': {
     posts: be('15', [408, 404, 894, 474]),
