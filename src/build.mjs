@@ -239,7 +239,7 @@ const home = page({
 
 <section class="work" id="work" aria-labelledby="work-h">
   <div class="sec-head">
-    <h2 id="work-h" class="work-title"><span data-split>Selected</span><span class="work-title-img" aria-hidden="true">${covers.slice(0, 4).map((c, i) => `<img src="${c}" alt="" style="--i:${i}">`).join('')}</span><span data-split><em>work</em><sup>(${PROJECTS.length})</sup></span></h2>
+    <h2 id="work-h" class="work-title"><span data-split>Selected</span><span data-split><em>work</em><sup>(${PROJECTS.length})</sup></span></h2>
     <p>${PROJECTS.length} projects, one rule: every page, post and sign should look like the same company made it.</p>
   </div>
   <ul class="cards">
