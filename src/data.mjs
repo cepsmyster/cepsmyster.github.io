@@ -81,13 +81,13 @@ export const PROJECTS = [
     field: 'Social media, motion, video and photo coverage',
     sector: 'Exhibition',
     year: '2026',
-    cover: 'sign',
+    cover: 'countdown',
     summary: 'Countdown stories, video and photo coverage for The Top Group at IPS 2026, Dubai World Trade Centre.',
     body: [
       'The countdown stories keep to one big number, the dates and the booth, with every company in the group signing off underneath: TCI, TCI Interiors, TCI Landscape, X30 Technical, Touch ID Decorations and TID Contracting.',
-      'At the show I covered the stand on video and in photos: the backlit Top Group sign, the meetings in the lounge, the tower model and the live violinist. I cut the footage into a vertical recap for social media.',
+      'At the show I covered the stand on video and in photos: the backlit Top Group sign, the meetings in the lounge, the tower model and the live violinist. I cut the footage into a vertical recap for social media, and the backdrop video on the stand cycled through project sheets from across the group.',
     ],
-    rows: [[{ video: 'ips-recap', ratio: '9 / 16' }, 'countdown'], ['sign', 'wall'], 'majlis', ['meeting', 'guests'], ['tower', 'crowd'], 'talk', ['violin', { video: 'villa-reel', ratio: '9 / 16' }], ['welcome', 'tour'], 'lounge'],
+    rows: [{ video: 'ips-backdrop', ratio: '16 / 9' }, ['countdown', { video: 'ips-recap', ratio: '9 / 16' }]],
   },
   {
     slug: 'resort-concept',

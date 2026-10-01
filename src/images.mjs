@@ -18,7 +18,6 @@ const WIDTHS = [800, 1600];
 const be = (n, crop, dw = 1400) => ({ src: `${BE}/243935583_${n}.jpg`, crop, dw });
 const hb = n => ({ src: `${BE}/244797281_${n}.jpg` });
 const pdf = n => ({ src: `${PDF}/${n}.png` });
-const photo = n => ({ src: `${PDF}/ips-${n}.png`, trim: true }); // event photos, transparent padding trimmed
 const tci = n => ({ src: `${WORK}/Company Profiles/TCI Company Profile Jpeg/${n}.jpg` });
 
 export const IMAGES = {
@@ -39,8 +38,6 @@ export const IMAGES = {
   },
   'ips-2026': {
     countdown: { src: `${WORK}/Social media/IPS 2026.png` },
-    sign: photo('01'), wall: photo('02'), meeting: photo('03'), majlis: photo('05'), guests: photo('07'), lounge: photo('08'),
-    crowd: photo('09'), tower: photo('10'), violin: photo('11'), welcome: photo('12'), tour: photo('13'), talk: photo('15'),
   },
   'resort-concept': {
     cover: pdf('forest-01'), master: pdf('forest-04'), amenities: pdf('forest-12'), pool: pdf('forest-14'),
