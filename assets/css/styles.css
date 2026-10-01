@@ -166,8 +166,8 @@ ul, ol { list-style: none; }
 .js .hn-2 .hn-word { transition-delay: .12s; }
 .js .is-ready .hn-word { transform: none; }
 .hn-ai {
-  position: relative; flex: 1; align-self: stretch; margin: .1em 0 .06em .06em; overflow: hidden;
-  display: flex; flex-direction: column; font: 400 11px/1.3 var(--sans); letter-spacing: 0; text-transform: none;
+  position: relative; flex: none; height: .7em; width: 1.12em; align-self: center; margin: 0 0 0 .08em; overflow: hidden;
+  display: flex; flex-direction: column;
   background: #323232; color: #d6d6d6; border-radius: 10px; box-shadow: 0 0 0 .5px rgba(0, 0, 0, .6), 0 20px 50px rgba(0, 0, 0, .25);
   clip-path: inset(0 100% 0 0 round 10px); transition: clip-path 1.2s var(--ease) .5s;
 }
@@ -228,7 +228,7 @@ ul, ol { list-style: none; }
   .hero-top { grid-template-columns: 1fr 1fr; }
   .hero-top p:nth-child(2) { display: none; }
   .hero-name { font-size: 27vw; }
-  .hn-ai { display: none; }
+  .hn-ai, .hn-ai2 { display: none; }
   .hero-foot { flex-direction: column; align-items: flex-start; }
 }
 
@@ -257,17 +257,12 @@ ul, ol { list-style: none; }
 .card a { display: flex; flex-direction: column; gap: 8px; }
 .card-cap { margin-top: 8px; }
 .card-label { font: 400 11px/1 var(--sans); color: var(--muted); letter-spacing: 0; padding: 0 1px 2px; }
-.card-box {
-  position: relative; display: grid; place-items: center; overflow: hidden; aspect-ratio: 1.42;
-  background: #2b2b2b; outline: 1px solid rgba(15, 15, 14, .12);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, .08), 0 6px 18px rgba(0, 0, 0, .06);
-}
-/* Effect > Blur > Gaussian Blur: the same photo, blurred, fills whatever the full photo doesn't reach */
-.card-box .card-blur { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(26px) saturate(1.1); transform: scale(1.15); }
-.card-box img:not(.card-blur) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: transform 1.2s var(--ease-out); }
-.card a:hover .card-box img:not(.card-blur) { transform: scale(1.02); }
+.card a { position: relative; }
+.card-box { position: relative; display: block; overflow: hidden; border-radius: 6px; aspect-ratio: 1.42; background: #e3e0d7; }
+.card-box img { position: absolute; inset: 7%; width: 86%; height: 86%; object-fit: contain; transition: transform 1.2s var(--ease-out); }
+.card a:hover .card-box img { transform: scale(1.025); }
 .card a:hover .card-label { color: var(--accent); }
-.card a:hover .card-box { outline-color: var(--accent); }
+.card-cap { margin-top: 8px; }
 .card-cap { display: flex; align-items: baseline; gap: 12px; padding: 0 2px; }
 .card-no { font-size: 11px; color: var(--muted); letter-spacing: .08em; font-variant-numeric: tabular-nums; }
 .card-title { font-size: clamp(18px, 1.5vw, 26px); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; }
@@ -394,19 +389,70 @@ ul, ol { list-style: none; }
 .sec-head em .pen-ul path, .about-big em .pen-ul path, .feature-text h2 em .pen-ul path, .foot-big em .pen-ul path, .nf-body em .pen-ul path { stroke-width: 5; }
 
 /* Mac Illustrator Effect menu on artboards that use the blur fill */
-.fx { position: absolute; left: 2.5%; top: 4%; z-index: 2; transform: scale(.7); display: flex; align-items: flex-start; font: 400 11px/1 -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif; letter-spacing: 0; color: #1d1d1f; pointer-events: none; transform-origin: 0 0; transition: opacity .5s var(--ease), transform .5s var(--ease-out); }
+.fx { position: relative; display: flex; align-items: flex-start; font: 400 14px/1 -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif; letter-spacing: 0; color: #1d1d1f; pointer-events: none; transform-origin: 0 0; transition: opacity .5s var(--ease), transform .5s var(--ease-out); }
 .fx-menu {
-  display: flex; flex-direction: column; min-width: 190px; padding: 5px; border-radius: 7px;
+  display: flex; flex-direction: column; min-width: 250px; padding: 6px; border-radius: 9px;
   background: rgba(246, 246, 246, .78); -webkit-backdrop-filter: blur(24px) saturate(180%); backdrop-filter: blur(24px) saturate(180%);
   box-shadow: 0 0 0 .5px rgba(0, 0, 0, .25), 0 10px 30px rgba(0, 0, 0, .28);
 }
-.fx-sub { min-width: 108px; margin: 174px 0 0 -4px; }
-.fx-i { position: relative; display: flex; justify-content: space-between; gap: 18px; padding: 3.5px 9px; border-radius: 4px; white-space: nowrap; }
+.fx-sub { min-width: 140px; margin: 228px 0 0 -6px; }
+.fx-i { position: relative; display: flex; justify-content: space-between; gap: 22px; padding: 4.5px 11px; border-radius: 5px; white-space: nowrap; }
 .fx-i kbd { font: inherit; color: rgba(0, 0, 0, .45); }
 .fx-i.sub::after { content: ''; width: 5px; height: 5px; border-right: 1.3px solid currentColor; border-top: 1.3px solid currentColor; transform: rotate(45deg); align-self: center; margin-right: 2px; opacity: .7; }
 .fx-i.on { background: #0a64d6; color: #fff; }
-.fx-h { padding: 4px 9px 2px; font-size: 10px; font-weight: 600; color: rgba(0, 0, 0, .4); }
+.fx-h { padding: 5px 11px 3px; font-size: 12px; font-weight: 600; color: rgba(0, 0, 0, .4); }
 .fx-sep { height: 1px; margin: 4px 9px; background: rgba(0, 0, 0, .12); }
-.card a:hover .fx { opacity: 0; transform: scale(.66); }
-@media (max-width: 1300px) { .fx { transform: scale(.6); } }
-@media (max-width: 800px) { .fx { transform: scale(.55); } }
+
+/* Illustrator panels on the work cards (one per row, alternating sides) */
+.aip-wrap { position: absolute; z-index: 3; pointer-events: none; transition: opacity .5s var(--ease), transform .6s var(--ease-out); }
+.aip-wrap.l { left: -2.5%; bottom: 12%; }
+.aip-wrap.r { right: -2.5%; top: 9%; }
+.card a:hover .aip-wrap { opacity: 0; transform: translateY(8px); }
+.aip {
+  display: flex; flex-direction: column; width: 270px; padding-bottom: 8px; border-radius: 8px; overflow: hidden;
+  background: #323232; color: #d8d8d8; font: 400 13px/1.25 -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif; letter-spacing: 0;
+  box-shadow: 0 0 0 .5px rgba(0, 0, 0, .7), 0 18px 44px rgba(0, 0, 0, .35);
+}
+.aip-tabs { display: flex; justify-content: space-between; align-items: center; height: 30px; padding: 0 10px 0 0; background: #2a2a2a; border-bottom: 1px solid #1c1c1c; margin-bottom: 6px; }
+.aip-tabs b { font-weight: 600; color: #f2f2f2; padding: 0 14px; height: 100%; display: flex; align-items: center; background: #323232; font-size: 12.5px; }
+.aip-x { color: #9a9a9a; }
+.aip-row { display: flex; align-items: center; gap: 9px; padding: 5px 10px; }
+.aip-row.sel { background: #46607f; color: #fff; }
+.aip-row img { width: 34px; height: 26px; object-fit: cover; border: 1px solid #1c1c1c; flex: none; }
+.aip-row svg { width: 16px; height: 16px; flex: none; color: #bdbdbd; }
+.aip-name { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.aip-bar { width: 3px; height: 20px; flex: none; }
+.aip-bar.c0 { background: #4f8cff; } .aip-bar.c1 { background: #ff4f4f; } .aip-bar.c2 { background: #3fd46b; } .aip-bar.c3 { background: #9b6bff; }
+.aip-target { width: 11px; height: 11px; border: 1.2px solid #9a9a9a; border-radius: 50%; flex: none; }
+.aip-foot { margin: 6px 10px 0; padding-top: 7px; border-top: 1px solid #262626; font-size: 11.5px; color: #9a9a9a; }
+.aip-swatches { display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; padding: 4px 10px 2px; }
+.aip-swatches i { aspect-ratio: 1; border: 1px solid #1c1c1c; }
+.aip-label { padding: 6px 12px 4px; font-size: 12px; color: #c4c4c4; }
+.aip-icons { display: flex; align-items: center; gap: 6px; padding: 0 12px 6px; }
+.aip-icons svg { width: 28px; height: 28px; padding: 3px; border-radius: 4px; background: #3c3c3c; }
+.aip-icons svg rect, .aip-icons svg path { fill: #d0d0d0; stroke: #d0d0d0; stroke-width: 1; }
+.aip-icons svg path { fill: none; }
+.aip-icons svg .o { fill: none; }
+.aip-icons svg .k { fill: #323232; }
+.aip-btn { margin-left: auto; padding: 4px 10px; border-radius: 5px; background: #4a4a4a; color: #eee; font-size: 12px; }
+.aip-field { margin: 3px 12px; padding: 5px 9px; border-radius: 5px; background: #1f1f1f; border: 1px solid #444; color: #eee; }
+.aip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px 12px 2px; }
+.aip-grid span { padding: 5px 8px; border-radius: 5px; background: #1f1f1f; border: 1px solid #444; color: #eee; }
+.aip-grid b { font-weight: 600; color: #a9a9a9; margin-right: 6px; }
+.aip-wrap .fx { pointer-events: none; }
+@media (max-width: 1300px) { .aip-wrap { transform: scale(.8); } .aip-wrap.l { transform-origin: 0 100%; } .aip-wrap.r { transform-origin: 100% 0; } }
+@media (max-width: 800px) { .aip-wrap { transform: scale(.62); } }
+
+/* Second hero window (Type tool) */
+.hn-ai2 { width: .78em; margin: 0 auto 0 0; }
+/* Sizes above are in the name's em; the window contents use normal UI type. */
+.hn-ai > * { font: 400 11px/1.3 var(--sans); letter-spacing: 0; text-transform: none; }
+.ai-type { flex: 1; display: grid; grid-template-rows: 1fr auto; min-height: 0; }
+.ai-type .ai-canvas { padding: 18px 12px 10px; }
+.ai-type-board { display: grid !important; place-items: center; }
+.ai-typed { font: 200 64px/1 var(--display); letter-spacing: -.04em; color: #111; display: inline-flex; align-items: center; }
+.ai-caret { width: 2px; height: .9em; background: #2f5bff; margin-left: 4px; animation: caret 1s steps(1) infinite; }
+@keyframes caret { 50% { opacity: 0; } }
+.ai-char { border-left: 0; border-top: 1px solid #1e1e1e; }
+.ai-field.wide { flex: 1; }
+.hn-2 { justify-content: space-between; }

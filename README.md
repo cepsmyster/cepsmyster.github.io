@@ -49,8 +49,8 @@ For a one-off image you can also export two WebP files at 800 and 1600 px wide b
   label (set with `data-cursor` on any element).
 - **Motion:** headings rise word by word, images uncover as they scroll in, the services strip drifts and speeds up
   with scrolling, and a black panel wipes between pages.
-- **Work grid:** two equal columns of Illustrator-style artboards ("01 - Artboard 1"). The full photo is never cropped; where it does not fill the artboard, a Gaussian-blurred copy fills the rest and a Mac Illustrator Effect › Blur › Gaussian Blur menu is shown.
-- **Hero window:** a small Mac Illustrator window next to the name, where the Pen tool draws a path on Artboard 1 (SVG animation in `src/build.mjs`).
+- **Work grid:** two equal columns of artboards labelled like Illustrator ("01 - Artboard 1"), each full photo on a soft mat. One Mac Illustrator panel per row, alternating sides: Effect menu, Links, Layers, Swatches, Pathfinder, Align, Character (`panelFor` in `src/build.mjs`).
+- **Hero windows:** two small Mac Illustrator windows the height of the capitals: the Pen tool drawing on Artboard 1 next to "Carl", and the Type tool with the Character panel next to "Serafin".
 - **Buttons:** frosted-glass pills (backdrop blur); `.btn-dark` is the version for the black footer.
 - Videos play only while on screen and never with sound. Visitors who turn on "reduce motion" get no loader,
   cursor trail or animation.

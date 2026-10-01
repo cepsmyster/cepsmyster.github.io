@@ -167,6 +167,23 @@ const AI_WINDOW = `
 
 // Mac Illustrator's Effect menu, opened on Blur > Gaussian Blur. Shown on cards whose
 // photo doesn't fill the artboard, where the blurred copy fills the rest.
+// Second hero window: the Type tool setting a word on an artboard, with the Character panel.
+const AI_TYPE = `
+<span class="ai-bar"><i></i><i></i><i></i><span class="ai-tab">Type.ai</span></span>
+<span class="ai-type">
+  <span class="ai-canvas">
+    <span class="ai-ab-label">02 - Artboard 2</span>
+    <span class="ai-artboard ai-type-board"><span class="ai-typed">Aa<i class="ai-caret"></i></span></span>
+  </span>
+  <span class="ai-panel ai-char">
+    <b>Character</b>
+    <span class="ai-row"><span class="ai-field wide">SF Pro Display</span></span>
+    <span class="ai-row"><span class="ai-field wide">Thin</span></span>
+    <span class="ai-row"><span>T</span><span class="ai-field">72 pt</span></span>
+    <span class="ai-row"><span>VA</span><span class="ai-field">−20</span></span>
+  </span>
+</span>`;
+
 const CARD_RATIO = 1.42;
 const needsBlur = (slug, name) => { const z = SIZES[`${slug}/${name}`]; return Math.abs(z.w / z.h - CARD_RATIO) / CARD_RATIO > 0.04; };
 const EFFECT_MENU = `<span class="fx" aria-hidden="true"><span class="fx-menu">
@@ -192,6 +209,41 @@ const EFFECT_MENU = `<span class="fx" aria-hidden="true"><span class="fx-menu">
   <span class="fx-i">Smart Blur…</span>
 </span></span>`;
 
+// One Mac Illustrator panel per row of cards, alternating left and right.
+const PANEL_KINDS = ['effect', 'links', 'layers', 'swatches', 'pathfinder', 'align', 'character'];
+const ICON = {
+  link: '<svg viewBox="0 0 16 16"><path d="M6.5 9.5l3-3M5 7.5L3.5 9a2.1 2.1 0 0 0 3 3L8 10.5M8 5.5L9.5 4a2.1 2.1 0 0 1 3 3L11 8.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>',
+  eye: '<svg viewBox="0 0 16 16"><path d="M1.5 8s2.5-4 6.5-4 6.5 4 6.5 4-2.5 4-6.5 4-6.5-4-6.5-4z" fill="none" stroke="currentColor" stroke-width="1.1"/><circle cx="8" cy="8" r="1.8" fill="currentColor"/></svg>',
+};
+const sq = (d) => `<svg viewBox="0 0 24 24">${d}</svg>`;
+function panelFor(p, i) {
+  const row = Math.floor(i / 2);
+  if (i % 2 !== row % 2) return '';
+  const kind = PANEL_KINDS[row % PANEL_KINDS.length];
+  const side = i % 2 ? 'r' : 'l';
+  const names = p.rows.flat().filter(r => typeof r === 'string').slice(0, 4);
+  if (kind === 'effect') return `<span class="aip-wrap ${side}">${EFFECT_MENU}</span>`;
+  const head = t => `<span class="aip-tabs"><b>${t}</b><span class="aip-x">≡</span></span>`;
+  let body = '';
+  if (kind === 'links') body = head('Links') + names.map((n, k) => `<span class="aip-row${k === 0 ? ' sel' : ''}"><img src="assets/img/${p.slug}/${n}-800.webp" alt="" loading="lazy"><span class="aip-name">${n}.psd</span>${ICON.link}</span>`).join('') + `<span class="aip-foot">${names.length} Links</span>`;
+  if (kind === 'layers') body = head('Layers') + ['Headline', 'Images', 'Grid', 'Background'].map((n, k) => `<span class="aip-row${k === 1 ? ' sel' : ''}">${ICON.eye}<i class="aip-bar c${k}"></i><span class="aip-name">${n}</span><i class="aip-target"></i></span>`).join('') + `<span class="aip-foot">4 Layers</span>`;
+  if (kind === 'swatches') body = head('Swatches') + `<span class="aip-swatches">${['#ffffff', '#0f0f0e', '#eeece5', '#2f5bff', '#ff5a36', '#14b37d', '#f4b400', '#8a8a8a', '#c9b79c', '#1d3557', '#a8dadc', '#e63946', '#6d6b64', '#ffd6a5', '#3a5a40', '#b5179e'].map(c => `<i style="background:${c}"></i>`).join('')}</span>`;
+  if (kind === 'pathfinder') body = head('Pathfinder') + `<span class="aip-label">Shape Modes:</span><span class="aip-icons">${[
+    '<rect x="3" y="3" width="11" height="11"/><rect x="10" y="10" width="11" height="11"/>',
+    '<rect x="3" y="3" width="11" height="11"/><rect x="10" y="10" width="11" height="11" class="o"/>',
+    '<rect x="3" y="3" width="11" height="11" class="o"/><rect x="10" y="10" width="11" height="11" class="o"/><rect x="10" y="10" width="4" height="4"/>',
+    '<rect x="3" y="3" width="11" height="11"/><rect x="10" y="10" width="11" height="11"/><rect x="10" y="10" width="4" height="4" class="k"/>'].map(sq).join('')}<span class="aip-btn">Expand</span></span><span class="aip-label">Pathfinders:</span><span class="aip-icons">${Array.from({ length: 6 }, (_, k) => sq(`<rect x="3" y="3" width="11" height="11" class="${k % 2 ? 'o' : ''}"/><rect x="10" y="10" width="11" height="11" class="${k % 3 ? '' : 'o'}"/>`)).join('')}</span>`;
+  if (kind === 'align') body = head('Align') + `<span class="aip-label">Align Objects:</span><span class="aip-icons">${[
+    '<path d="M3 2v20"/><rect x="5" y="5" width="12" height="5"/><rect x="5" y="14" width="8" height="5"/>',
+    '<path d="M12 2v20"/><rect x="5" y="5" width="14" height="5"/><rect x="7" y="14" width="10" height="5"/>',
+    '<path d="M21 2v20"/><rect x="7" y="5" width="12" height="5"/><rect x="11" y="14" width="8" height="5"/>',
+    '<path d="M2 3h20"/><rect x="5" y="5" width="5" height="12"/><rect x="14" y="5" width="5" height="8"/>',
+    '<path d="M2 12h20"/><rect x="5" y="5" width="5" height="14"/><rect x="14" y="7" width="5" height="10"/>',
+    '<path d="M2 21h20"/><rect x="5" y="7" width="5" height="12"/><rect x="14" y="11" width="5" height="8"/>'].map(sq).join('')}</span><span class="aip-label">Distribute Objects:</span><span class="aip-icons">${Array.from({ length: 6 }, (_, k) => sq(k < 3 ? `<path d="M2 ${5 + k * 5}h20"/><rect x="4" y="3" width="5" height="18"/><rect x="15" y="3" width="5" height="18"/>` : `<path d="M${5 + (k - 3) * 5} 2v20"/><rect x="3" y="4" width="18" height="5"/><rect x="3" y="15" width="18" height="5"/>`)).join('')}</span>`;
+  if (kind === 'character') body = head('Character') + `<span class="aip-field">SF Pro Display</span><span class="aip-field">Thin</span><span class="aip-grid"><span><b>T</b> 72 pt</span><span><b>A</b> (86 pt)</span><span><b>VA</b> Auto</span><span><b>VA</b> −20</span></span>`;
+  return `<span class="aip-wrap ${side}" aria-hidden="true"><span class="aip">${body}</span></span>`;
+}
+
 const loader = `
 <div class="loader" aria-hidden="true">
   <div class="orbit">${covers.map((c, i) => `<img src="${c}" alt="" style="--i:${i}">`).join('')}</div>
@@ -215,7 +267,7 @@ const home = page({
   </div>
   <h1 class="hero-name" id="hero-name" aria-label="${SITE.name}">
     <span class="hn-line hn-1" aria-hidden="true"><span class="hn-word">Carl</span><span class="hn-ai" aria-hidden="true">${AI_WINDOW}</span></span>
-    <span class="hn-line hn-2" aria-hidden="true"><span class="hn-word">Serafin</span></span>
+    <span class="hn-line hn-2" aria-hidden="true"><span class="hn-ai hn-ai2" aria-hidden="true">${AI_TYPE}</span><span class="hn-word">Serafin</span></span>
     <span class="hn-path" aria-hidden="true">
       <svg viewBox="0 0 1000 400" preserveAspectRatio="none"><path d="M20 330 C 180 120, 330 380, 500 210 S 820 40, 980 150"/><line x1="500" y1="210" x2="390" y2="330"/><line x1="500" y1="210" x2="610" y2="90"/></svg>
       <i class="hn-a" style="left:2%;top:82.5%"></i><i class="hn-a" style="left:50%;top:52.5%"></i><i class="hn-a" style="left:98%;top:37.5%"></i>
@@ -239,7 +291,8 @@ const home = page({
 ${PROJECTS.map((p, i) => `    <li class="card" data-fade>
       <a href="work/${p.slug}.html" data-cursor="View project">
         <span class="card-label">${pad(i + 1)} - Artboard ${i + 1}</span>
-        <span class="card-box${needsBlur(p.slug, p.cover) ? ' has-blur' : ''}"><img class="card-blur" src="assets/img/${p.slug}/${p.cover}-800.webp" alt="" loading="lazy" decoding="async">${img(p.slug, p.cover, { sizes: '(min-width: 800px) 46vw, 100vw', alt: '' })}${needsBlur(p.slug, p.cover) ? EFFECT_MENU : ''}</span>
+        <span class="card-box">${img(p.slug, p.cover, { sizes: '(min-width: 800px) 46vw, 100vw', alt: '' })}</span>
+        ${panelFor(p, i)}
         <span class="card-cap">
           <span class="card-no">${pad(i + 1)}</span>
           <span class="card-title">${esc(p.title)}</span>

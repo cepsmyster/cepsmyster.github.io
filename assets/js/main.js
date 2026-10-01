@@ -97,9 +97,11 @@
   var heroName = document.querySelector('.hero-name');
   if (heroName) {
     var fitName = function () {
-      var word = heroName.querySelector('.hn-2 .hn-word');
+      var line = heroName.querySelector('.hn-2');
       heroName.style.fontSize = '100px';
-      var w = word.getBoundingClientRect().width;
+      // Width of "Serafin" plus the Type window beside it (hidden on phones).
+      var w = 0;
+      [].forEach.call(line.children, function (c) { if (c.offsetWidth) w += c.getBoundingClientRect().width + 12; });
       if (!w) return;
       // Fill the width, but keep both lines and the intro on the first screen.
       var byWidth = 100 * heroName.clientWidth / w * 0.995;
