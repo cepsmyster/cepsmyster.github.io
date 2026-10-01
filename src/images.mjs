@@ -39,6 +39,19 @@ export const IMAGES = {
   'ips-2026': {
     countdown: { src: `${WORK}/Social media/IPS 2026.png` },
   },
+  'resort-concept': {
+    cover: pdf('forest-01'), master: pdf('forest-04'), amenities: pdf('forest-12'), pool: pdf('forest-14'),
+    reception: pdf('forest-21'), dining: pdf('forest-23'), plan: pdf('forest-29'), lobby: pdf('forest-36'),
+    cards: pdf('forest-39'), arcade: pdf('forest-45'), jacuzzi: pdf('forest-57'), suiteboard: pdf('forest-70'), suites: pdf('forest-71'),
+  },
+  'villa-estate-presentation': {
+    aerial: pdf('ohood-45'), mansion: pdf('ohood-46'), garden: pdf('ohood-47'), beach: pdf('ohood-50'),
+    majlis: pdf('ohood-53'), bedroom: pdf('ohood-58'), bathroom: pdf('ohood-62'),
+  },
+  'fitout-company-profile': {
+    cover: pdf('touchid-01'), about: pdf('touchid-03'), vision: pdf('touchid-05'), government: pdf('touchid-08'),
+    residential: pdf('touchid-19'), office: pdf('touchid-26'), fnb: pdf('touchid-41'), retail: pdf('touchid-52'), landscape: pdf('touchid-74'),
+  },
   'repc-signage': {
     grand: pdf('repc-01'), soon: pdf('repc-02'), navy: pdf('repc-03'), navy2: pdf('repc-04'),
     site: { src: `${WORK}/Prints/Signage/WhatsApp Image 2026-06-30 at 6.35.23 PM.jpeg` },

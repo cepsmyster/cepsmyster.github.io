@@ -238,5 +238,121 @@
  "homega-heights/mockup": {
   "w": 4500,
   "h": 3000
+ },
+ "resort-concept/cover": {
+  "w": 2000,
+  "h": 1415
+ },
+ "resort-concept/master": {
+  "w": 2000,
+  "h": 1415
+ },
+ "resort-concept/amenities": {
+  "w": 2000,
+  "h": 1415
+ },
+ "resort-concept/pool": {
+  "w": 2000,
+  "h": 1415
+ },
+ "resort-concept/reception": {
+  "w": 2000,
+  "h": 1415
+ },
+ "resort-concept/dining": {
+  "w": 2000,
+  "h": 1415
+ },
+ "resort-concept/plan": {
+  "w": 2000,
+  "h": 1415
+ },
+ "resort-concept/lobby": {
+  "w": 2000,
+  "h": 1415
+ },
+ "resort-concept/cards": {
+  "w": 2000,
+  "h": 1415
+ },
+ "resort-concept/arcade": {
+  "w": 2000,
+  "h": 1415
+ },
+ "resort-concept/jacuzzi": {
+  "w": 2000,
+  "h": 1415
+ },
+ "resort-concept/suiteboard": {
+  "w": 2000,
+  "h": 1415
+ },
+ "resort-concept/suites": {
+  "w": 2000,
+  "h": 1415
+ },
+ "villa-estate-presentation/aerial": {
+  "w": 2000,
+  "h": 1295
+ },
+ "villa-estate-presentation/mansion": {
+  "w": 2000,
+  "h": 1302
+ },
+ "villa-estate-presentation/garden": {
+  "w": 2000,
+  "h": 1303
+ },
+ "villa-estate-presentation/beach": {
+  "w": 2000,
+  "h": 1299
+ },
+ "villa-estate-presentation/majlis": {
+  "w": 2000,
+  "h": 1290
+ },
+ "villa-estate-presentation/bedroom": {
+  "w": 2000,
+  "h": 2829
+ },
+ "villa-estate-presentation/bathroom": {
+  "w": 2000,
+  "h": 1415
+ },
+ "fitout-company-profile/cover": {
+  "w": 2000,
+  "h": 1415
+ },
+ "fitout-company-profile/about": {
+  "w": 2000,
+  "h": 1415
+ },
+ "fitout-company-profile/vision": {
+  "w": 2000,
+  "h": 1415
+ },
+ "fitout-company-profile/government": {
+  "w": 2000,
+  "h": 1415
+ },
+ "fitout-company-profile/residential": {
+  "w": 2000,
+  "h": 1415
+ },
+ "fitout-company-profile/office": {
+  "w": 2000,
+  "h": 1415
+ },
+ "fitout-company-profile/fnb": {
+  "w": 2000,
+  "h": 1415
+ },
+ "fitout-company-profile/retail": {
+  "w": 2000,
+  "h": 1415
+ },
+ "fitout-company-profile/landscape": {
+  "w": 2000,
+  "h": 1415
  }
 }
