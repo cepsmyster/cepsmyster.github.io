@@ -11,6 +11,8 @@ export const SITE = {
   role: 'Graphic designer',
   city: 'Dubai',
   email: 'carlserafin02@gmail.com',
+  whatsapp: '+971 55 150 2722',
+  whatsappLink: 'https://wa.me/971551502722',
   behance: 'https://www.behance.net/carlserafin',
   url: 'https://cepsmyster.github.io/',
   description: 'Carl Paolo Serafin is a graphic designer in Dubai working on brand identities, print, social media, signage and presentations, and currently exploring web development using Claude Code.',

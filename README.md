@@ -38,7 +38,7 @@ For a one-off image you can also export two WebP files at 800 and 1600 px wide b
 
 ## How the site works
 
-- **Type and colour:** Bodoni Moda for headings (thin, high-contrast) with Jost Light for body text, on a warm paper background, with
+- **Type and colour:** the Apple system font (SF Pro) on Apple devices and Inter elsewhere, thin for headings, on a warm paper background, with
   one accent colour (Illustrator path blue, `--accent` in `assets/css/styles.css`).
 - **Loader:** on the first visit in a session the home page opens on a black screen where the project covers orbit
   while a counter runs to 100%, then the screen lifts away.
@@ -49,6 +49,7 @@ For a one-off image you can also export two WebP files at 800 and 1600 px wide b
   label (set with `data-cursor` on any element).
 - **Motion:** headings rise word by word, images uncover as they scroll in, the services strip drifts and speeds up
   with scrolling, and a black panel wipes between pages.
-- **Work grid:** full-width tiles in a repeating pattern of one wide, then pairs that swap sides.
+- **Work grid:** two equal columns of cards; each full photo sits on a soft mat, with a number, title and a hover arrow below.
+- **Buttons:** frosted-glass pills (backdrop blur); `.btn-dark` is the version for the black footer.
 - Videos play only while on screen and never with sound. Visitors who turn on "reduce motion" get no loader,
   cursor trail or animation.

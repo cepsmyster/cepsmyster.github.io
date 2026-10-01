@@ -68,8 +68,10 @@ const footer = pre => `
 <footer class="foot" id="contact">
   <p class="foot-kicker">Have a project in mind?</p>
   <h2 class="foot-big"><a href="mailto:${SITE.email}" data-cursor="Email me">Let’s <em>make</em><br>something</a></h2>
+  <p class="links"><a class="btn btn-dark" href="mailto:${SITE.email}">Email me</a> <a class="btn btn-dark" href="${SITE.whatsappLink}" rel="noopener">Message on WhatsApp</a></p>
   <div class="foot-row">
     <p><span class="lbl">Email</span><a href="mailto:${SITE.email}">${SITE.email}</a></p>
+    <p><span class="lbl">WhatsApp</span><a href="${SITE.whatsappLink}" rel="noopener">${SITE.whatsapp}</a></p>
     <p><span class="lbl">Elsewhere</span><a href="${SITE.behance}" rel="me noopener">Behance</a></p>
     <p><span class="lbl">Based in</span>Dubai, UAE <span class="clock" data-clock></span></p>
     <p><span class="lbl">©</span>2026 ${SITE.fullName}</p>
@@ -96,7 +98,7 @@ ${image ? `<meta property="og:image" content="${SITE.url}${image}">` : ''}
 <link rel="icon" href="${pre}assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Jost:ital,wght@0,300..500;1,300..500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..700;1,14..32,100..700&display=swap">
 <link rel="stylesheet" href="${pre}assets/css/styles.css?v=${VERSION}">
 </head>
 <body class="${cls}">
@@ -157,25 +159,21 @@ const home = page({
 
 <section class="work" id="work" aria-labelledby="work-h">
   <div class="sec-head">
-    <h2 id="work-h" data-split>Selected <em>work</em><sup>(${PROJECTS.length})</sup></h2>
+    <h2 id="work-h" class="work-title"><span data-split>Selected</span><span class="work-title-img" aria-hidden="true">${covers.slice(0, 4).map((c, i) => `<img src="${c}" alt="" style="--i:${i}">`).join('')}</span><span data-split><em>work</em><sup>(${PROJECTS.length})</sup></span></h2>
     <p>A selection of brand, print, digital and presentation work made in Dubai between 2024 and 2026.</p>
   </div>
-  <ul class="grid">
-${PROJECTS.map((p, i) => {
-    const shape = SHAPES[i % SHAPES.length];
-    const [kind, side = ''] = shape.split(' ');
-    return `    <li class="tile tile-${kind}${side ? ' ' + side : ''}">
+  <ul class="cards">
+${PROJECTS.map((p, i) => `    <li class="card" data-fade>
       <a href="work/${p.slug}.html" data-cursor="View project">
-        <span class="tile-img" data-reveal>${img(p.slug, p.cover, { sizes: TILE_SIZES[kind], alt: '' })}</span>
-        <span class="tile-cap">
-          <span class="tile-no">${pad(i + 1)}</span>
-          <span class="tile-title">${esc(p.title)}</span>
-          <span class="tile-field">${esc(p.field)}</span>
-          <span class="tile-year">${esc(p.year)}</span>
+        <span class="card-box">${img(p.slug, p.cover, { sizes: '(min-width: 800px) 46vw, 100vw', alt: '' })}</span>
+        <span class="card-cap">
+          <span class="card-no">${pad(i + 1)}</span>
+          <span class="card-title">${esc(p.title)}</span>
+          <svg class="card-arrow" viewBox="0 0 24 12" aria-hidden="true"><path d="M0 6h22M17 1l5 5-5 5"/></svg>
+          <span class="card-field">${esc(p.field)}</span>
         </span>
       </a>
-    </li>`;
-  }).join('\n')}
+    </li>`).join('\n')}
   </ul>
 </section>
 

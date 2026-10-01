@@ -45,7 +45,7 @@
   });
 
   // ---------- Reveal on scroll ----------
-  var revealables = document.querySelectorAll('[data-split], [data-reveal]');
+  var revealables = document.querySelectorAll('[data-split], [data-reveal], [data-fade]');
   if ('IntersectionObserver' in window && !reduce) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
