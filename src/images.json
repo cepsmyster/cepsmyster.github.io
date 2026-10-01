@@ -1,0 +1,278 @@
+{
+ "top-concept-website/home": {
+  "w": 1440,
+  "h": 900
+ },
+ "top-concept-website/mobile": {
+  "w": 390,
+  "h": 844
+ },
+ "top-concept-website/projects": {
+  "w": 1440,
+  "h": 900
+ },
+ "top-concept-website/expertise": {
+  "w": 1440,
+  "h": 900
+ },
+ "tci-company-profile/cover": {
+  "w": 9933,
+  "h": 7016
+ },
+ "tci-company-profile/azizi": {
+  "w": 9933,
+  "h": 7016
+ },
+ "tci-company-profile/hospitality": {
+  "w": 9933,
+  "h": 7016
+ },
+ "tci-company-profile/divider": {
+  "w": 9933,
+  "h": 7016
+ },
+ "tci-company-profile/towers": {
+  "w": 9933,
+  "h": 7016
+ },
+ "tci-company-profile/interiors": {
+  "w": 9933,
+  "h": 7016
+ },
+ "tci-company-profile/lobby": {
+  "w": 9933,
+  "h": 7016
+ },
+ "tci-company-profile/rox": {
+  "w": 9933,
+  "h": 7016
+ },
+ "tci-company-profile/interiors2": {
+  "w": 9933,
+  "h": 7016
+ },
+ "tci-company-profile/landscape": {
+  "w": 9933,
+  "h": 7016
+ },
+ "tci-company-profile/identity": {
+  "w": 2000,
+  "h": 1906
+ },
+ "tci-company-profile/marks": {
+  "w": 2000,
+  "h": 2432
+ },
+ "touch-id-contracting/cover": {
+  "w": 2000,
+  "h": 1415
+ },
+ "touch-id-contracting/logo": {
+  "w": 2000,
+  "h": 1415
+ },
+ "touch-id-contracting/mark": {
+  "w": 2000,
+  "h": 1415
+ },
+ "touch-id-contracting/pattern": {
+  "w": 2000,
+  "h": 1415
+ },
+ "touch-id-contracting/cards": {
+  "w": 2000,
+  "h": 1415
+ },
+ "touch-id-contracting/signage": {
+  "w": 2000,
+  "h": 1415
+ },
+ "touch-id-contracting/cars": {
+  "w": 2000,
+  "h": 1415
+ },
+ "touch-id-contracting/bus": {
+  "w": 2000,
+  "h": 1415
+ },
+ "touch-id-contracting/mug": {
+  "w": 2000,
+  "h": 1415
+ },
+ "touch-id-contracting/vest": {
+  "w": 2000,
+  "h": 1415
+ },
+ "touch-id-contracting/tid": {
+  "w": 2000,
+  "h": 1415
+ },
+ "touch-id-contracting/tidcolors": {
+  "w": 2000,
+  "h": 1415
+ },
+ "touch-id-contracting/tidcards": {
+  "w": 2000,
+  "h": 1415
+ },
+ "touch-id-contracting/tidbus": {
+  "w": 2000,
+  "h": 1415
+ },
+ "touch-id-contracting/tidshirt": {
+  "w": 2000,
+  "h": 1415
+ },
+ "touch-id-contracting/tidoveralls": {
+  "w": 2000,
+  "h": 1415
+ },
+ "touch-id-contracting/tidhelmet": {
+  "w": 2000,
+  "h": 1415
+ },
+ "touch-id-contracting/tidid": {
+  "w": 2000,
+  "h": 1415
+ },
+ "ips-2026/countdown": {
+  "w": 1080,
+  "h": 1920
+ },
+ "oncology-presentation/cover": {
+  "w": 2000,
+  "h": 1415
+ },
+ "oncology-presentation/reception": {
+  "w": 2000,
+  "h": 1415
+ },
+ "oncology-presentation/ward": {
+  "w": 2000,
+  "h": 1415
+ },
+ "oncology-presentation/room": {
+  "w": 2000,
+  "h": 1415
+ },
+ "oncology-presentation/lounge": {
+  "w": 2000,
+  "h": 1415
+ },
+ "oncology-presentation/bed": {
+  "w": 2000,
+  "h": 1415
+ },
+ "oncology-presentation/detail": {
+  "w": 2000,
+  "h": 1415
+ },
+ "oncology-presentation/door": {
+  "w": 2000,
+  "h": 1415
+ },
+ "repc-signage/grand": {
+  "w": 2000,
+  "h": 1305
+ },
+ "repc-signage/soon": {
+  "w": 2000,
+  "h": 1305
+ },
+ "repc-signage/navy": {
+  "w": 2000,
+  "h": 1305
+ },
+ "repc-signage/navy2": {
+  "w": 2000,
+  "h": 1305
+ },
+ "repc-signage/site": {
+  "w": 1280,
+  "h": 960
+ },
+ "repc-signage/logo": {
+  "w": 452,
+  "h": 640
+ },
+ "abdulla-al-arif/emails": {
+  "w": 1247,
+  "h": 829
+ },
+ "abdulla-al-arif/stories": {
+  "w": 1240,
+  "h": 504
+ },
+ "abdulla-al-arif/phone": {
+  "w": 1440,
+  "h": 541
+ },
+ "abdulla-al-arif/books": {
+  "w": 1240,
+  "h": 434
+ },
+ "abdulla-al-arif/ramadan": {
+  "w": 812,
+  "h": 432
+ },
+ "abdulla-al-arif/earthday": {
+  "w": 385,
+  "h": 432
+ },
+ "naresco/posts": {
+  "w": 1240,
+  "h": 285
+ },
+ "naresco/phone": {
+  "w": 1441,
+  "h": 961
+ },
+ "proguard-renova360/posts": {
+  "w": 1240,
+  "h": 358
+ },
+ "proguard-renova360/ads": {
+  "w": 1240,
+  "h": 1060
+ },
+ "proguard-renova360/profiles": {
+  "w": 1240,
+  "h": 432
+ },
+ "proguard-renova360/renova": {
+  "w": 1441,
+  "h": 900
+ },
+ "daytona-properties/ads": {
+  "w": 1241,
+  "h": 325
+ },
+ "daytona-properties/brochures": {
+  "w": 1240,
+  "h": 432
+ },
+ "daytona-properties/standee": {
+  "w": 1441,
+  "h": 869
+ },
+ "world-padel-academy/posts": {
+  "w": 920,
+  "h": 488
+ },
+ "homega-heights/cover": {
+  "w": 2551,
+  "h": 3579
+ },
+ "homega-heights/inside": {
+  "w": 2551,
+  "h": 3579
+ },
+ "homega-heights/mockup": {
+  "w": 4500,
+  "h": 3000
+ },
+ "about/portrait": {
+  "w": 432,
+  "h": 432
+ }
+}
