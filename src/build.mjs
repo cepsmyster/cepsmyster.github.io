@@ -47,50 +47,60 @@ function video(name, ratio, pre) {
   return `<video class="clip" style="aspect-ratio:${ratio}" src="${pre}assets/video/${name}.mp4" poster="${pre}assets/video/${name}.jpg" muted loop playsinline preload="none" data-autoplay aria-label="Video clip"></video>`;
 }
 
+const pad = n => String(n).padStart(2, '0');
+
+// Split a heading into words so each can rise out of its own mask.
+const words = t => esc(t).split(' ').map(w => `<span class="w"><span>${w}</span></span>`).join(' ');
+
 const header = pre => `
 <a class="skip" href="#main">Skip to content</a>
 <header class="top">
-  <a class="top-name" href="${pre || './'}">${SITE.name}</a>
-  <p class="top-role">${SITE.role}, ${SITE.city} <span class="clock" data-clock aria-label="Local time in Dubai"></span></p>
+  <a class="top-name" href="${pre || './'}" data-scramble>Carl Serafin<sup>©</sup></a>
+  <p class="top-role"><span>${SITE.role}</span><span>${SITE.city} <span class="clock" data-clock aria-label="Local time in Dubai"></span></span></p>
   <nav class="top-nav" aria-label="Main">
-    <a href="${pre}index.html#work">Work</a>
-    <a href="${pre}index.html#about">About</a>
-    <a href="${pre}index.html#contact">Contact</a>
+    <a href="${pre}index.html#work" data-scramble>Work</a>
+    <a href="${pre}index.html#about" data-scramble>About</a>
+    <a href="${pre}index.html#contact" data-scramble>Contact</a>
   </nav>
 </header>`;
 
-const colourBar = `<div class="colourbar" aria-hidden="true"><i class="cb-c"></i><i class="cb-m"></i><i class="cb-y"></i><i class="cb-k"></i><svg class="reg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.5"/><path d="M12 0v24M0 12h24"/></svg></div>`;
-
 const footer = pre => `
-<footer class="foot">
-  ${colourBar}
-  <p>© 2026 ${SITE.fullName}</p>
-  <p><a href="mailto:${SITE.email}">${SITE.email}</a></p>
-  <p><a href="${SITE.behance}" rel="me noopener">Behance</a></p>
+<footer class="foot" id="contact">
+  <p class="foot-kicker">Have a project in mind?</p>
+  <h2 class="foot-big"><a href="mailto:${SITE.email}" data-cursor="Email me">Let’s <em>make</em><br>something</a></h2>
+  <div class="foot-row">
+    <p><span class="lbl">Email</span><a href="mailto:${SITE.email}">${SITE.email}</a></p>
+    <p><span class="lbl">Elsewhere</span><a href="${SITE.behance}" rel="me noopener">Behance</a></p>
+    <p><span class="lbl">Based in</span>Dubai, UAE <span class="clock" data-clock></span></p>
+    <p><span class="lbl">©</span>2026 ${SITE.fullName}</p>
+    <p><a class="totop" href="#main">Back to top ↑</a></p>
+  </div>
 </footer>
+<div class="wipe" aria-hidden="true"></div>
 <script src="${pre}assets/js/main.js?v=${VERSION}" defer></script>`;
 
-function page({ title, description, pre = '', body, cls = '', image }) {
+function page({ title, description, pre = '', body, cls = '', image, before = '' }) {
   return `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>document.documentElement.classList.add('js');setTimeout(function(){var p=document.querySelector('.press');if(p)p.classList.add('inked')},3000)</script>
+<script>document.documentElement.classList.add('js')</script>
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:type" content="website">
 ${image ? `<meta property="og:image" content="${SITE.url}${image}">` : ''}
-<meta name="theme-color" content="#f4f4f1">
+<meta name="theme-color" content="#eeece5">
 <link rel="icon" href="${pre}assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&family=Instrument+Serif:ital@0;1&display=swap">
 <link rel="stylesheet" href="${pre}assets/css/styles.css?v=${VERSION}">
 </head>
 <body class="${cls}">
+${before}
 ${header(pre)}
 <main id="main">
 ${body}
@@ -102,73 +112,97 @@ ${footer(pre)}
 }
 
 // ---------- Home ----------
-const pressLines = '<span class="l1">Carl</span><span class="l2">Serafin</span>';
+// Tile shapes for the work grid, repeating: one wide, then pairs that swap sides.
+const SHAPES = ['wide', 'big', 'small', 'small', 'big'];
+const covers = PROJECTS.map(p => `assets/img/${p.slug}/${p.cover}-800.webp`);
+
+const loader = `
+<div class="loader" aria-hidden="true">
+  <div class="orbit">${covers.map((c, i) => `<img src="${c}" alt="" style="--i:${i}">`).join('')}</div>
+  <p class="loader-name">Carl Serafin<sup>©</sup></p>
+  <p class="loader-role">Portfolio 2024—2026</p>
+  <p class="loader-count"><span data-count>0</span>%</p>
+</div>`;
+
 const home = page({
   title: `${SITE.fullName}, graphic designer in Dubai`,
   description: SITE.description,
   image: 'assets/img/top-concept-website/home-1600.webp',
   cls: 'home',
+  before: loader,
   body: `
 <section class="hero" aria-labelledby="hero-name">
-  <h1 class="press" id="hero-name" aria-label="${SITE.name}">
-    <span class="plate p-y" aria-hidden="true">${pressLines}</span>
-    <span class="plate p-m" aria-hidden="true">${pressLines}</span>
-    <span class="plate p-c" aria-hidden="true">${pressLines}</span>
-    <span class="plate p-k" aria-hidden="true">${pressLines}</span>
+  <div class="hero-top">
+    <p>Portfolio <em>©2024—2026</em></p>
+    <p>Brand identity, print, social,<br>signage, presentations and web</p>
+    <p class="hero-avail"><i></i>Open to new projects</p>
+  </div>
+  <h1 class="hero-name" id="hero-name" aria-label="${SITE.name}">
+    <span class="hn-line hn-1" aria-hidden="true"><span class="hn-word">Carl</span><span class="hn-reel">${covers.slice(0, 8).map((c, i) => `<img src="${c}" alt="" style="--i:${i}">`).join('')}</span></span>
+    <span class="hn-line hn-2" aria-hidden="true"><span class="hn-word">Serafin</span></span>
+    <span class="hn-path" aria-hidden="true">
+      <svg viewBox="0 0 1000 400" preserveAspectRatio="none"><path d="M20 330 C 180 120, 330 380, 500 210 S 820 40, 980 150"/><line x1="500" y1="210" x2="390" y2="330"/><line x1="500" y1="210" x2="610" y2="90"/></svg>
+      <i class="hn-a" style="left:2%;top:82.5%"></i><i class="hn-a" style="left:50%;top:52.5%"></i><i class="hn-a" style="left:98%;top:37.5%"></i>
+      <i class="hn-h" style="left:39%;top:82.5%"></i><i class="hn-h" style="left:61%;top:22.5%"></i>
+    </span>
   </h1>
   <div class="hero-foot">
-    <p class="hero-lead">Graphic designer in Dubai. I make brand identities, company profiles, social campaigns, signage and presentations, and I’ve started designing and building websites.</p>
-    ${colourBar}
+    <p class="hero-lead">Graphic designer in Dubai, making <em>brands</em>, <em>books</em>, <em>campaigns</em> and now <em>websites</em> for architecture, construction and real estate companies.</p>
+    <a class="hero-scroll" href="#work">Scroll <span>↓</span></a>
   </div>
 </section>
+
+<div class="marquee" aria-hidden="true"><div class="mq-track">${Array(2).fill(`<span>${ABOUT.fields.map(f => `${esc(f)} <i>✦</i>`).join(' ')}</span>`).join('')}</div></div>
 
 <section class="work" id="work" aria-labelledby="work-h">
   <div class="sec-head">
-    <h2 id="work-h">Selected work</h2>
-    <p>${PROJECTS.length} projects, 2024–2026</p>
+    <h2 id="work-h" data-split>Selected <em>work</em><sup>(${PROJECTS.length})</sup></h2>
+    <p>A selection of brand, print, digital and presentation work made in Dubai between 2024 and 2026.</p>
   </div>
-  <ul class="index">
-${PROJECTS.map(p => `    <li>
-      <a href="work/${p.slug}.html" data-peek="assets/img/${p.slug}/${p.cover}-800.webp">
-        <span class="ix-thumb">${img(p.slug, p.cover, { sizes: '96px', alt: '' })}</span>
-        <span class="ix-title">${esc(p.title)}</span>
-        <span class="ix-field">${esc(p.field)}</span>
-        <span class="ix-year">${esc(p.year)}</span>
+  <ul class="grid">
+${PROJECTS.map((p, i) => {
+    const shape = SHAPES[i % SHAPES.length];
+    return `    <li class="tile tile-${shape}">
+      <a href="work/${p.slug}.html" data-cursor="View project">
+        <span class="tile-img" data-reveal>${img(p.slug, p.cover, { sizes: shape === 'wide' ? '100vw' : '(min-width: 800px) 58vw, 100vw', alt: '' })}</span>
+        <span class="tile-cap">
+          <span class="tile-no">${pad(i + 1)}</span>
+          <span class="tile-title">${esc(p.title)}</span>
+          <span class="tile-field">${esc(p.field)}</span>
+          <span class="tile-year">${esc(p.year)}</span>
+        </span>
       </a>
-    </li>`).join('\n')}
+    </li>`;
+  }).join('\n')}
   </ul>
-  <div class="peek" aria-hidden="true"><img alt=""></div>
 </section>
 
 <section class="feature" aria-labelledby="feature-h">
-  <figure class="crop feature-img">${img('top-concept-website', 'home', { sizes: '(min-width: 900px) 62vw, 100vw' })}</figure>
+  <a class="feature-img" href="work/top-concept-website.html" data-cursor="View project" data-reveal>${img('top-concept-website', 'home', { sizes: '100vw', alt: 'Top Concept International website home page' })}</a>
   <div class="feature-text">
-    <h2 id="feature-h">Now designing for the web</h2>
+    <p class="kicker">New direction</p>
+    <h2 id="feature-h" data-split>Now designing <em>for the web</em></h2>
     <p>The Top Concept International website is the first site I designed and built with Claude Code: a blueprint-to-render hero you can drag, a project archive, and a light and dark theme, in plain HTML, CSS and JavaScript.</p>
-    <p class="links"><a class="btn" href="work/top-concept-website.html">See the project</a> <a class="btn btn-ghost" href="https://cepsmyster.github.io/top-concept-website/" rel="noopener">Visit the live site</a></p>
+    <p class="links"><a class="btn" href="work/top-concept-website.html">See the project</a> <a class="btn btn-ghost" href="https://cepsmyster.github.io/top-concept-website/" rel="noopener">Visit the live site ↗</a></p>
   </div>
 </section>
 
 <section class="about" id="about" aria-labelledby="about-h">
-  <div class="sec-head"><h2 id="about-h">About me</h2></div>
-  <div class="about-grid">
-    <figure class="crop about-photo about-placeholder" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="38" r="15"/><path d="M22 80c3-15 14-23 28-23s25 8 28 23"/></svg></figure>
+  <p class="kicker">About</p>
+  <h2 id="about-h" class="about-big" data-split>I turn ideas into <em>brands</em>, <em>pages</em> and <em>places</em> people actually use.</h2>
+  <div class="about-cols">
     <div class="about-text">
-      ${ABOUT.intro.map((t, i) => `<p${i === 0 ? ' class="lead"' : ''}>${esc(t)}</p>`).join('\n      ')}
+      ${ABOUT.intro.map(t => `<p>${esc(t)}</p>`).join('\n      ')}
     </div>
+    <ol class="services">
+      ${ABOUT.fields.map((f, i) => `<li><span>${pad(i + 1)}</span>${esc(f)}</li>`).join('\n      ')}
+    </ol>
   </div>
   <div class="about-lists">
-    <div><h3>What I do</h3><ul>${ABOUT.fields.map(f => `<li>${esc(f)}</li>`).join('')}</ul></div>
     <div><h3>Tools</h3><ul>${ABOUT.tools.map(f => `<li>${esc(f)}</li>`).join('')}</ul></div>
     <div><h3>Clients</h3><ul>${[...new Set(PROJECTS.flatMap(p => p.client.split(', ')))].map(f => `<li>${esc(f)}</li>`).join('')}</ul></div>
     <div><h3>Languages</h3><ul>${ABOUT.languages.map(f => `<li>${esc(f)}</li>`).join('')}</ul></div>
   </div>
-</section>
-
-<section class="contact" id="contact" aria-labelledby="contact-h">
-  <h2 id="contact-h">Have a project in mind? Send me an email.</h2>
-  <p><a class="mail" href="mailto:${SITE.email}">${SITE.email}</a></p>
-  <p class="contact-more">More work on <a href="${SITE.behance}" rel="me noopener">Behance</a>. Based in Dubai, UAE.</p>
 </section>`,
 });
 
@@ -176,10 +210,10 @@ ${PROJECTS.map(p => `    <li>
 function rowHtml(p, row) {
   const pre = '../';
   const cell = (r, sizes) => typeof r === 'object' && r.video
-    ? `<figure class="crop">${video(r.video, r.ratio, pre)}</figure>`
-    : `<figure class="crop">${img(p.slug, r, { sizes }, pre)}</figure>`;
-  if (Array.isArray(row)) return `<div class="row pair">${row.map(r => cell(r, '(min-width: 800px) 45vw, 100vw')).join('')}</div>`;
-  return `<div class="row">${cell(row, '(min-width: 1200px) 1200px, 100vw')}</div>`;
+    ? `<figure data-reveal>${video(r.video, r.ratio, pre)}</figure>`
+    : `<figure data-reveal>${img(p.slug, r, { sizes }, pre)}</figure>`;
+  if (Array.isArray(row)) return `<div class="row pair">${row.map(r => cell(r, '(min-width: 800px) 50vw, 100vw')).join('')}</div>`;
+  return `<div class="row">${cell(row, '100vw')}</div>`;
 }
 
 PROJECTS.forEach((p, i) => {
@@ -193,8 +227,11 @@ PROJECTS.forEach((p, i) => {
     body: `
 <article>
   <header class="p-head">
-    <p class="back"><a href="../index.html#work">All work</a></p>
-    <h1>${esc(p.title)}</h1>
+    <p class="p-crumb"><a href="../index.html#work">← All work</a><span>Project ${pad(i + 1)} / ${pad(PROJECTS.length)}</span></p>
+    <h1 data-split>${words(p.title)}</h1>
+  </header>
+  <figure class="p-hero" data-reveal>${img(p.slug, p.cover, { sizes: '100vw', eager: true }, '../')}</figure>
+  <section class="p-info">
     <dl class="meta">
       <div><dt>Client</dt><dd>${esc(p.client)}</dd></div>
       <div><dt>Work</dt><dd>${esc(p.field)}</dd></div>
@@ -204,18 +241,18 @@ PROJECTS.forEach((p, i) => {
     <div class="p-text">
       <p class="lead">${esc(p.summary)}</p>
       ${p.body.map(t => `<p>${esc(t)}</p>`).join('\n      ')}
-      ${p.link ? `<p class="links"><a class="btn" href="${p.link.href}" rel="noopener">${esc(p.link.label)}</a></p>` : ''}
+      ${p.link ? `<p class="links"><a class="btn" href="${p.link.href}" rel="noopener">${esc(p.link.label)} ↗</a></p>` : ''}
     </div>
-  </header>
+  </section>
   <div class="plates">
-    ${p.rows.map(r => rowHtml(p, r)).join('\n    ')}
+    ${p.rows.filter((r, k) => !(k === 0 && r === p.cover)).map(r => rowHtml(p, r)).join('\n    ')}
   </div>
 </article>
 <nav class="next" aria-label="Next project">
-  <a href="${next.slug}.html">
-    <span class="next-label">Next project</span>
+  <a href="${next.slug}.html" data-cursor="Next project">
+    <span class="next-img">${img(next.slug, next.cover, { sizes: '100vw', alt: '' }, '../')}</span>
+    <span class="next-label">Next project — ${pad((i + 1) % PROJECTS.length + 1)}</span>
     <span class="next-title">${esc(next.title)}</span>
-    <span class="next-img">${img(next.slug, next.cover, { sizes: '(min-width: 800px) 40vw, 100vw', alt: '' }, '../')}</span>
   </a>
 </nav>`,
   });
@@ -231,7 +268,7 @@ const notFound = page({
   description: 'This page does not exist.',
   pre: '/',
   cls: 'nf',
-  body: `<section class="nf-body"><h1>This page isn’t here</h1><p>The link may be old or mistyped. <a href="/">Go to the home page</a> to see all work.</p></section>`,
+  body: `<section class="nf-body"><h1 data-split>Lost the <em>path</em></h1><p>The link may be old or mistyped. <a href="/">Go to the home page</a> to see all work.</p></section>`,
 });
 fs.writeFileSync(path.join(ROOT, '404.html'), notFound);
 
