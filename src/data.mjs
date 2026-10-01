@@ -22,7 +22,7 @@ export const ABOUT = {
   intro: [
     'I’m Carl Paolo Serafin, a graphic designer in Dubai. It started with a love of art. Now I turn it into work people use every day.',
     'Most of my clients build things: architecture firms, contractors and real estate developers across the UAE. I design their identities, company profiles, social campaigns, signage and presentations.',
-    'Lately I’ve been building websites with Claude Code. The Top Concept International site was the first. I learn by shipping real pages for real clients.',
+    'Lately I’ve been designing and building websites. The Top Concept International site was the first. I learn by shipping real pages for real clients.',
     'New team, new brief, tight deadline? I adapt fast. My favourite projects are the ones where one idea has to work on a phone screen, a printed page and a sign on a building.',
   ],
   fields: ['Brand identity', 'Print and editorial', 'Social media', 'Signage', 'Presentations', 'Motion graphics', 'Video editing', 'Web design and development'],
