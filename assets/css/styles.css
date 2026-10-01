@@ -30,7 +30,22 @@ body {
 }
 img, video { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }
-em { font-family: var(--display); font-style: italic; font-weight: inherit; letter-spacing: inherit; }
+/* Emphasis: no italics. Each <em> gets a hand-drawn pen-tool underline (added in main.js). */
+em { font-style: normal; position: relative; display: inline-block; }
+.pen-ul { position: absolute; left: -.06em; right: -.06em; bottom: -.16em; height: .34em; pointer-events: none; overflow: visible; }
+.pen-ul svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.pen-ul path { fill: none; stroke: var(--ul, var(--accent)); stroke-width: 2.5; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.1s var(--ease); }
+.pen-ul line { stroke: var(--ul, var(--accent)); stroke-width: 1; vector-effect: non-scaling-stroke; opacity: 0; transition: opacity .3s; }
+.pen-ul i { position: absolute; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; background: #fff; border: 1.5px solid var(--ul, var(--accent)); opacity: 0; transform: scale(0); transition: opacity .2s, transform .4s var(--ease-out); }
+.pen-ul i.h { width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; border-radius: 50%; background: var(--ul, var(--accent)); border: 0; }
+.drawn > .pen-ul path { stroke-dashoffset: 0; }
+.drawn > .pen-ul i { opacity: 1; transform: none; }
+.drawn > .pen-ul i:nth-of-type(2) { transition-delay: 1s; }
+em:hover > .pen-ul line, em:hover > .pen-ul i.h { opacity: 1; }
+.drawn > .pen-ul i.h { opacity: 0; }
+em:hover > .pen-ul i.h { opacity: 1; }
+.foot em { --ul-paper: #0f0f0e; }
+.foot .pen-ul i:not(.h) { background: var(--ink); }
 strong, b { font-weight: 500; }
 h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; padding: 0; }
 ul, ol { list-style: none; }
@@ -118,6 +133,7 @@ ul, ol { list-style: none; }
 
 /* ---------- Reveals ---------- */
 .js [data-split] .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .08em; margin-bottom: -.08em; }
+.js [data-split] .w:has(em) { padding-bottom: .45em; margin-bottom: -.45em; padding-inline: .1em; margin-inline: -.1em; }
 .js [data-split] .w > span { display: inline-block; transform: translateY(105%); transition: transform 1.1s var(--ease-out); transition-delay: calc(var(--k, 0) * 45ms); }
 .js [data-split].is-in .w > span { transform: none; }
 .js [data-reveal] { position: relative; overflow: hidden; }
@@ -333,3 +349,6 @@ ul, ol { list-style: none; }
   .js .loader { display: none; }
   .hn-reel img:first-child { opacity: 1; }
 }
+
+/* Heavier underline strokes under the big headings */
+.sec-head em .pen-ul path, .about-big em .pen-ul path, .feature-text h2 em .pen-ul path, .foot-big em .pen-ul path, .nf-body em .pen-ul path { stroke-width: 5; }

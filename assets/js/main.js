@@ -44,6 +44,41 @@
     el.appendChild(out);
   });
 
+  // ---------- Pen-tool underlines under <em> ----------
+  // Every emphasised word gets its own abstract Bezier stroke in one of four
+  // colours, drawn in when it comes into view, with square anchor points at
+  // both ends and handles that show on hover.
+  var UL_COLOURS = ['#2f5bff', '#ff5a36', '#14b37d', '#f4b400'];
+  document.querySelectorAll('em').forEach(function (em, n) {
+    if (em.querySelector('.pen-ul')) return;
+    var r = function (a, b) { return a + Math.random() * (b - a); };
+    var y1 = r(9, 15), y2 = r(5, 13), c1x = r(18, 40), c1y = r(18, 26), c2x = r(55, 80), c2y = r(-6, 4);
+    var d = 'M1 ' + y1.toFixed(1) + ' C ' + c1x.toFixed(1) + ' ' + c1y.toFixed(1) + ', ' + c2x.toFixed(1) + ' ' + c2y.toFixed(1) + ', 99 ' + y2.toFixed(1);
+    var ul = document.createElement('span');
+    ul.className = 'pen-ul';
+    ul.setAttribute('aria-hidden', 'true');
+    ul.innerHTML = '<svg viewBox="0 0 100 20" preserveAspectRatio="none"><path pathLength="1" d="' + d + '"/>' +
+      '<line x1="1" y1="' + y1.toFixed(1) + '" x2="' + c1x.toFixed(1) + '" y2="' + c1y.toFixed(1) + '"/>' +
+      '<line x1="99" y1="' + y2.toFixed(1) + '" x2="' + c2x.toFixed(1) + '" y2="' + c2y.toFixed(1) + '"/></svg>' +
+      '<i style="left:1%;top:' + (y1 * 5) + '%"></i><i style="left:99%;top:' + (y2 * 5) + '%"></i>' +
+      '<i class="h" style="left:' + c1x + '%;top:' + (c1y * 5) + '%"></i><i class="h" style="left:' + c2x + '%;top:' + (c2y * 5) + '%"></i>';
+    em.style.setProperty('--ul', UL_COLOURS[n % UL_COLOURS.length]);
+    em.appendChild(ul);
+  });
+  var ems = document.querySelectorAll('em');
+  if ('IntersectionObserver' in window && !reduce) {
+    var eio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        setTimeout(function () { e.target.classList.add('drawn'); }, 450);
+        eio.unobserve(e.target);
+      });
+    }, { threshold: 1 });
+    ems.forEach(function (em) { eio.observe(em); });
+  } else {
+    ems.forEach(function (em) { em.classList.add('drawn'); });
+  }
+
   // ---------- Reveal on scroll ----------
   var revealables = document.querySelectorAll('[data-split], [data-reveal], [data-fade]');
   if ('IntersectionObserver' in window && !reduce) {
