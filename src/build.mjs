@@ -222,7 +222,7 @@ function panelFor(p, i) {
   const kind = PANEL_KINDS[row % PANEL_KINDS.length];
   const side = i % 2 ? 'r' : 'l';
   const names = p.rows.flat().filter(r => typeof r === 'string').slice(0, 4);
-  if (kind === 'effect') return `<span class="aip-wrap ${side}">${EFFECT_MENU}</span>`;
+  if (kind === 'effect') return `<span class="aip-wrap ${side} p${row % PANEL_KINDS.length}">${EFFECT_MENU}</span>`;
   const head = t => `<span class="aip-tabs"><b>${t}</b><span class="aip-x">≡</span></span>`;
   let body = '';
   if (kind === 'links') body = head('Links') + names.map((n, k) => `<span class="aip-row${k === 0 ? ' sel' : ''}"><img src="assets/img/${p.slug}/${n}-800.webp" alt="" loading="lazy"><span class="aip-name">${n}.psd</span>${ICON.link}</span>`).join('') + `<span class="aip-foot">${names.length} Links</span>`;
@@ -241,7 +241,7 @@ function panelFor(p, i) {
     '<path d="M2 12h20"/><rect x="5" y="5" width="5" height="14"/><rect x="14" y="7" width="5" height="10"/>',
     '<path d="M2 21h20"/><rect x="5" y="7" width="5" height="12"/><rect x="14" y="11" width="5" height="8"/>'].map(sq).join('')}</span><span class="aip-label">Distribute Objects:</span><span class="aip-icons">${Array.from({ length: 6 }, (_, k) => sq(k < 3 ? `<path d="M2 ${5 + k * 5}h20"/><rect x="4" y="3" width="5" height="18"/><rect x="15" y="3" width="5" height="18"/>` : `<path d="M${5 + (k - 3) * 5} 2v20"/><rect x="3" y="4" width="18" height="5"/><rect x="3" y="15" width="18" height="5"/>`)).join('')}</span>`;
   if (kind === 'character') body = head('Character') + `<span class="aip-field">SF Pro Display</span><span class="aip-field">Thin</span><span class="aip-grid"><span><b>T</b> 72 pt</span><span><b>A</b> (86 pt)</span><span><b>VA</b> Auto</span><span><b>VA</b> −20</span></span>`;
-  return `<span class="aip-wrap ${side}" aria-hidden="true"><span class="aip">${body}</span></span>`;
+  return `<span class="aip-wrap ${side} p${row % PANEL_KINDS.length}" aria-hidden="true"><span class="aip">${body}</span></span>`;
 }
 
 const loader = `
