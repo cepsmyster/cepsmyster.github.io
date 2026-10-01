@@ -145,7 +145,7 @@ ${PROJECTS.map(p => `    <li>
   <figure class="crop feature-img">${img('top-concept-website', 'home', { sizes: '(min-width: 900px) 62vw, 100vw' })}</figure>
   <div class="feature-text">
     <h2 id="feature-h">Now designing for the web</h2>
-    <p>The Top Concept International website is the first site I designed and built myself: a blueprint-to-render hero you can drag, a project archive, and a light and dark theme, in plain HTML, CSS and JavaScript.</p>
+    <p>The Top Concept International website is the first site I designed and built with Claude Code: a blueprint-to-render hero you can drag, a project archive, and a light and dark theme, in plain HTML, CSS and JavaScript.</p>
     <p class="links"><a class="btn" href="work/top-concept-website.html">See the project</a> <a class="btn btn-ghost" href="https://cepsmyster.github.io/top-concept-website/" rel="noopener">Visit the live site</a></p>
   </div>
 </section>

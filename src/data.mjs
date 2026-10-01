@@ -13,13 +13,13 @@ export const SITE = {
   email: 'carlserafin02@gmail.com',
   behance: 'https://www.behance.net/carlserafin',
   url: 'https://cepsmyster.github.io/',
-  description: 'Carl Paolo Serafin is a graphic designer in Dubai working on brand identities, print, social media, signage and presentations, and currently exploring web development.',
+  description: 'Carl Paolo Serafin is a graphic designer in Dubai working on brand identities, print, social media, signage and presentations, and currently exploring web development using Claude Code.',
 };
 
 export const ABOUT = {
   intro: [
     'I’m Carl Paolo Serafin, a graphic designer based in Dubai. I’ve always loved art, and design became the way I turn that into work people use: brand identities, company profiles and brochures, social media campaigns, signage and presentations, mostly for real estate, construction and architecture companies in the UAE.',
-    'I’m currently exploring web development. The Top Concept International website is the first site I designed and built myself, and I’m learning by making real pages for real clients.',
+    'I’m currently exploring web development using Claude Code. The Top Concept International website is the first site I designed and built with it, and I’m learning by making real pages for real clients.',
     'I adapt quickly to new teams and briefs, and I like a project most when the same idea has to hold together across a phone screen, a printed page and a sign on a building.',
   ],
   fields: ['Brand identity', 'Print and editorial', 'Social media', 'Signage', 'Presentations', 'Motion', 'Web design and development'],
