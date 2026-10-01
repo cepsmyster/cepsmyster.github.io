@@ -137,7 +137,7 @@
   var mqX = 0, mqBoost = 0;
 
   // ---------- Parallax on the work tiles ----------
-  var tiles = [].slice.call(document.querySelectorAll('.tile-img img, .next-img img'));
+  var tiles = [].slice.call(document.querySelectorAll('.next-img img'));
 
   var onFrame = function () {
     var y = window.scrollY, dy = y - lastY;

@@ -113,7 +113,8 @@ ${footer(pre)}
 
 // ---------- Home ----------
 // Tile shapes for the work grid, repeating: one wide, then pairs that swap sides.
-const SHAPES = ['wide', 'big', 'small', 'small', 'big'];
+const SHAPES = ['wide', 'big l', 'small r', 'small l', 'big r'];
+const TILE_SIZES = { wide: '(min-width: 800px) 62vw, 100vw', big: '(min-width: 800px) 45vw, 100vw', small: '(min-width: 800px) 30vw, 100vw' };
 const covers = PROJECTS.map(p => `assets/img/${p.slug}/${p.cover}-800.webp`);
 
 const loader = `
@@ -162,9 +163,10 @@ const home = page({
   <ul class="grid">
 ${PROJECTS.map((p, i) => {
     const shape = SHAPES[i % SHAPES.length];
-    return `    <li class="tile tile-${shape}">
+    const [kind, side = ''] = shape.split(' ');
+    return `    <li class="tile tile-${kind}${side ? ' ' + side : ''}">
       <a href="work/${p.slug}.html" data-cursor="View project">
-        <span class="tile-img" data-reveal>${img(p.slug, p.cover, { sizes: shape === 'wide' ? '100vw' : '(min-width: 800px) 58vw, 100vw', alt: '' })}</span>
+        <span class="tile-img" data-reveal>${img(p.slug, p.cover, { sizes: TILE_SIZES[kind], alt: '' })}</span>
         <span class="tile-cap">
           <span class="tile-no">${pad(i + 1)}</span>
           <span class="tile-title">${esc(p.title)}</span>
