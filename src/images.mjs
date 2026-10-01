@@ -18,6 +18,7 @@ const WIDTHS = [800, 1600];
 const be = (n, crop, dw = 1400) => ({ src: `${BE}/243935583_${n}.jpg`, crop, dw });
 const hb = n => ({ src: `${BE}/244797281_${n}.jpg` });
 const pdf = n => ({ src: `${PDF}/${n}.png` });
+const photo = n => ({ src: `${PDF}/ips-${n}.png`, trim: true }); // event photos, transparent padding trimmed
 const tci = n => ({ src: `${WORK}/Company Profiles/TCI Company Profile Jpeg/${n}.jpg` });
 
 export const IMAGES = {
@@ -25,7 +26,7 @@ export const IMAGES = {
     home: pdf('web-desk'), mobile: pdf('web-mob'), projects: pdf('web-proj'), expertise: pdf('web-exp'),
   },
   'tci-company-profile': {
-    cover: tci('1-01'), azizi: tci('1-03'), hospitality: tci('1-07'), divider: tci('1-16'), towers: tci('1-21'),
+    front: pdf('tci-front'), cover: tci('1-01'), azizi: tci('1-03'), hospitality: tci('1-07'), divider: tci('1-16'), towers: tci('1-21'),
     interiors: tci('1-44'), lobby: tci('1-46'), rox: tci('2-17'), interiors2: tci('2-34'), landscape: tci('2-46'),
     identity: { ...pdf('top-01'), crop: [0, 1110, 913, 870], dw: 913 },
     marks: { ...pdf('top-01'), crop: [0, 0, 913, 1110], dw: 913 },
@@ -38,6 +39,8 @@ export const IMAGES = {
   },
   'ips-2026': {
     countdown: { src: `${WORK}/Social media/IPS 2026.png` },
+    sign: photo('01'), wall: photo('02'), meeting: photo('03'), majlis: photo('05'), guests: photo('07'), lounge: photo('08'),
+    crowd: photo('09'), tower: photo('10'), violin: photo('11'), welcome: photo('12'), tour: photo('13'), talk: photo('15'),
   },
   'resort-concept': {
     cover: pdf('forest-01'), master: pdf('forest-04'), amenities: pdf('forest-12'), pool: pdf('forest-14'),
@@ -93,6 +96,7 @@ for (const [project, imgs] of Object.entries(IMAGES)) {
   fs.mkdirSync(path.join(OUT, project), { recursive: true });
   for (const [name, def] of Object.entries(imgs)) {
     let img = sharp(def.src, { failOn: 'none', limitInputPixels: false });
+    if (def.trim) img = sharp(await img.trim().toBuffer());
     const meta = await img.metadata();
     if (def.crop) {
       const k = meta.width / (def.dw || meta.width);
