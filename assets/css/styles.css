@@ -235,11 +235,12 @@ ul, ol { list-style: none; }
 /* ---------- Marquee ---------- */
 .marquee { overflow: hidden; border-block: 1px solid var(--line); padding: 14px 0; background: var(--bg); }
 .mq-track { display: flex; width: max-content; will-change: transform; }
-.mq-track span { display: block; white-space: nowrap; font-size: clamp(28px, 4vw, 64px); letter-spacing: -.01em; font-family: var(--display); font-weight: 200; font-optical-sizing: auto; padding-right: .4em; }
-.mq-anchor { display: inline-block; width: 1.6em; height: .6em; margin: 0 .45em; vertical-align: middle; overflow: visible; }
-.mq-anchor line { stroke: var(--accent); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
-.mq-anchor circle { fill: var(--accent); }
-.mq-anchor rect { fill: #fff; stroke: var(--accent); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.mq-track > span { display: block; white-space: nowrap; font-size: clamp(28px, 4vw, 64px); letter-spacing: -.01em; font-family: var(--display); font-weight: 200; font-optical-sizing: auto; padding-right: .4em; }
+.mq-item { display: inline-flex; align-items: center; gap: .32em; margin-right: .9em; }
+.mq-app { display: inline-grid; place-items: center; flex: none; font: 600 .4em/1 var(--sans); letter-spacing: -.02em;
+  width: 2.2em; height: 2.2em; border-radius: .5em; background: var(--bg); color: var(--fg); box-shadow: inset 0 0 0 .11em var(--fg); }
+.mq-figma { background: #1e1e1e; box-shadow: none; }
+.mq-figma svg { width: 46%; height: auto; }
 
 /* ---------- Section heads ---------- */
 .sec-head { display: grid; grid-template-columns: 2fr 1fr; align-items: end; gap: 30px; padding: 28vh var(--edge) 12vh; }

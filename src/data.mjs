@@ -25,7 +25,7 @@ export const ABOUT = {
     'Lately I’ve been building websites with Claude Code. The Top Concept International site was the first. I learn by shipping real pages for real clients.',
     'New team, new brief, tight deadline? I adapt fast. My favourite projects are the ones where one idea has to work on a phone screen, a printed page and a sign on a building.',
   ],
-  fields: ['Brand identity', 'Print and editorial', 'Social media', 'Signage', 'Presentations', 'Motion', 'Web design and development'],
+  fields: ['Brand identity', 'Print and editorial', 'Social media', 'Signage', 'Presentations', 'Motion graphics', 'Video editing', 'Web design and development'],
   tools: ['Illustrator', 'Photoshop', 'InDesign', 'After Effects', 'Premiere Pro', 'Figma', 'HTML, CSS and JavaScript'],
   languages: ['Filipino', 'English'],
 };

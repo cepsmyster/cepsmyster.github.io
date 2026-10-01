@@ -182,8 +182,21 @@ const AI_TYPE = `
   </span>
 </span>`;
 
-// Marquee separator: an Illustrator anchor point with its two Bezier handles.
-const ANCHOR = '<svg class="mq-anchor" viewBox="0 0 64 24"><line x1="6" y1="18" x2="58" y2="6"/><circle cx="6" cy="18" r="3.4"/><circle cx="58" cy="6" r="3.4"/><rect x="26" y="6" width="12" height="12"/></svg>';
+// Marquee: each service with the app it's made in.
+const APPS = {
+  'Brand identity': 'ai', 'Signage': 'ai', 'Print and editorial': 'id', 'Presentations': 'id',
+  'Social media': 'ps', 'Motion graphics': 'ae', 'Video editing': 'pr', 'Web design and development': 'figma',
+};
+const APP_TILE = {
+  ai: ['Ai', '#330000', '#ff9a00'], id: ['Id', '#49021f', '#ff3366'], ps: ['Ps', '#001e36', '#31a8ff'],
+  ae: ['Ae', '#00005b', '#9999ff'], pr: ['Pr', '#00005b', '#9999ff'],
+};
+const appIcon = field => {
+  const k = APPS[field];
+  if (k === 'figma') return '<span class="mq-app mq-figma"><svg viewBox="0 0 38 57"><path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z" fill="#1abcfe"/><path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0z" fill="#0acf83"/><path d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19z" fill="#ff7262"/><path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z" fill="#f24e1e"/><path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z" fill="#a259ff"/></svg></span>';
+  const [t, bg, fg] = APP_TILE[k];
+  return `<span class="mq-app" style="--bg:${bg};--fg:${fg}">${t}</span>`;
+};
 
 const loader = `
 <div class="loader" aria-hidden="true">
@@ -238,7 +251,7 @@ const home = page({
   </div>
 </section>
 
-<div class="marquee" aria-hidden="true"><div class="mq-track">${Array(2).fill(`<span>${ABOUT.fields.map(f => `${esc(f)} ${ANCHOR}`).join(' ')}</span>`).join('')}</div></div>
+<div class="marquee" aria-hidden="true"><div class="mq-track">${Array(2).fill(`<span>${ABOUT.fields.map(f => `<span class="mq-item">${appIcon(f)}${esc(f)}</span>`).join(' ')}</span>`).join('')}</div></div>
 
 <section class="work" id="work" aria-labelledby="work-h">
   <div class="sec-head">
