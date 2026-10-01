@@ -126,7 +126,7 @@ export const PROJECTS = [
     field: 'Editorial, presentation design',
     sector: 'Interior fit-out and joinery',
     year: '2026',
-    cover: 'government',
+    cover: 'cover',
     summary: 'A 79-page company profile for a Dubai fit-out and joinery company in the group, made at Top Concept International.',
     body: [
       'After the about, vision and services pages, the profile sorts the work by sector: government, residential towers, offices, food and beverage, retail and landscape. Each sector opens on a full-width photo with a bold yellow headline and a short list of notable projects.',
