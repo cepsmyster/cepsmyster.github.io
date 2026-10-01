@@ -77,9 +77,6 @@ export const IMAGES = {
   'homega-heights': {
     cover: hb('01'), inside: hb('02'), mockup: hb('03'),
   },
-  about: {
-    portrait: be('02', [112, 112, 420, 420]),
-  },
 };
 
 const manifest = {};

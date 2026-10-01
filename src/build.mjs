@@ -32,7 +32,6 @@ const ALT = {
   books: 'Magazine and booklet spreads', ramadan: 'Ramadan Games banner', earthday: 'Earth Day poster',
   posts: 'Instagram posts', ads: 'Social media ads', profiles: 'Company profile spreads', renova: 'ReNova360 print and phone mockup',
   brochures: 'Brochures and flyers', standee: 'Roll-up standee with a QR code', inside: 'Brochure page', mockup: 'Folded brochures on a table',
-  portrait: 'Portrait of Carl Serafin',
 };
 
 function img(slug, name, { sizes = '100vw', eager = false, alt, cls = '' } = {}, pre = '') {
@@ -153,7 +152,7 @@ ${PROJECTS.map(p => `    <li>
 <section class="about" id="about" aria-labelledby="about-h">
   <div class="sec-head"><h2 id="about-h">About me</h2></div>
   <div class="about-grid">
-    <figure class="crop about-photo">${img('about', 'portrait', { sizes: '(min-width: 900px) 30vw, 80vw' })}</figure>
+    <figure class="crop about-photo about-placeholder" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="38" r="15"/><path d="M22 80c3-15 14-23 28-23s25 8 28 23"/></svg></figure>
     <div class="about-text">
       ${ABOUT.intro.map((t, i) => `<p${i === 0 ? ' class="lead"' : ''}>${esc(t)}</p>`).join('\n      ')}
     </div>

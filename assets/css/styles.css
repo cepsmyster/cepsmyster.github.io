@@ -230,6 +230,9 @@ p { margin: 0 0 1em; }
   padding-top: clamp(32px, 4vw, 56px);
 }
 .about-photo { max-width: 420px; }
+/* Placeholder until a new photo is chosen */
+.about-placeholder { aspect-ratio: 1; background: #e6e6e1; display: grid; place-items: center; }
+.about-placeholder svg { width: 38%; fill: none; stroke: var(--mute); stroke-width: 2.5; stroke-linecap: round; }
 .about-text { max-width: 38em; }
 .lead { font-size: clamp(20px, 1.9vw, 26px); line-height: 1.38; }
 .about-lists {
