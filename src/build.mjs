@@ -96,7 +96,7 @@ ${image ? `<meta property="og:image" content="${SITE.url}${image}">` : ''}
 <link rel="icon" href="${pre}assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Jost:ital,wght@0,300..500;1,300..500&display=swap">
 <link rel="stylesheet" href="${pre}assets/css/styles.css?v=${VERSION}">
 </head>
 <body class="${cls}">
@@ -185,7 +185,7 @@ ${PROJECTS.map((p, i) => {
     <p class="kicker">New direction</p>
     <h2 id="feature-h" data-split>Now designing <em>for the web</em></h2>
     <p>The Top Concept International website is the first site I designed and built with Claude Code: a blueprint-to-render hero you can drag, a project archive, and a light and dark theme, in plain HTML, CSS and JavaScript.</p>
-    <p class="links"><a class="btn" href="work/top-concept-website.html">See the project</a> <a class="btn btn-ghost" href="https://cepsmyster.github.io/top-concept-website/" rel="noopener">Visit the live site ↗</a></p>
+    <p class="links"><a class="btn" href="work/top-concept-website.html">See the project</a> <a class="btn btn-ghost" href="https://cepsmyster.github.io/top-concept-website/" rel="noopener">Visit the live site</a></p>
   </div>
 </section>
 
@@ -243,7 +243,7 @@ PROJECTS.forEach((p, i) => {
     <div class="p-text">
       <p class="lead">${esc(p.summary)}</p>
       ${p.body.map(t => `<p>${esc(t)}</p>`).join('\n      ')}
-      ${p.link ? `<p class="links"><a class="btn" href="${p.link.href}" rel="noopener">${esc(p.link.label)} ↗</a></p>` : ''}
+      ${p.link ? `<p class="links"><a class="btn" href="${p.link.href}" rel="noopener">${esc(p.link.label)}</a></p>` : ''}
     </div>
   </section>
   <div class="plates">

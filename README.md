@@ -38,7 +38,7 @@ For a one-off image you can also export two WebP files at 800 and 1600 px wide b
 
 ## How the site works
 
-- **Type and colour:** Instrument Sans with Instrument Serif italics for accents, on a warm paper background, with
+- **Type and colour:** Bodoni Moda for headings (thin, high-contrast) with Jost Light for body text, on a warm paper background, with
   one accent colour (Illustrator path blue, `--accent` in `assets/css/styles.css`).
 - **Loader:** on the first visit in a session the home page opens on a black screen where the project covers orbit
   while a counter runs to 100%, then the screen lifts away.
