@@ -66,9 +66,9 @@ const header = pre => `
 
 const footer = pre => `
 <footer class="foot" id="contact">
-  <p class="foot-kicker">Have a project in mind?</p>
+  <p class="foot-kicker">Got a brief, a deadline or just an idea?</p>
   <h2 class="foot-big"><a href="mailto:${SITE.email}" data-cursor="Email me">Let’s <em>make</em><br>something</a></h2>
-  <p class="links"><a class="btn btn-dark" href="mailto:${SITE.email}">Email me</a> <a class="btn btn-dark" href="${SITE.whatsappLink}" rel="noopener">Message on WhatsApp</a></p>
+  <p class="links"><a class="btn btn-dark" href="mailto:${SITE.email}">Email me</a> <a class="btn btn-dark" href="${SITE.whatsappLink}" rel="noopener">WhatsApp me</a></p>
   <div class="foot-row">
     <p><span class="lbl">Email</span><a href="mailto:${SITE.email}">${SITE.email}</a></p>
     <p><span class="lbl">WhatsApp</span><a href="${SITE.whatsappLink}" rel="noopener">${SITE.whatsapp}</a></p>
@@ -137,7 +137,7 @@ const home = page({
 <section class="hero" aria-labelledby="hero-name">
   <div class="hero-top">
     <p>Portfolio <em>©2024—2026</em></p>
-    <p>Brand identity, print, social,<br>signage, presentations and web</p>
+    <p>Brands, books, campaigns,<br>signage, decks and web</p>
     <p class="hero-avail"><i></i>Open to new projects</p>
   </div>
   <h1 class="hero-name" id="hero-name" aria-label="${SITE.name}">
@@ -150,7 +150,7 @@ const home = page({
     </span>
   </h1>
   <div class="hero-foot">
-    <p class="hero-lead">Graphic designer in Dubai, making <em>brands</em>, <em>books</em>, <em>campaigns</em> and now <em>websites</em> for architecture, construction and real estate companies.</p>
+    <p class="hero-lead">I design <em>brands</em>, <em>company profiles</em> and <em>pitch decks</em> for the companies building Dubai. Now I build <em>websites</em> too.</p>
     <a class="hero-scroll" href="#work">Scroll <span>↓</span></a>
   </div>
 </section>
@@ -160,7 +160,7 @@ const home = page({
 <section class="work" id="work" aria-labelledby="work-h">
   <div class="sec-head">
     <h2 id="work-h" class="work-title"><span data-split>Selected</span><span class="work-title-img" aria-hidden="true">${covers.slice(0, 4).map((c, i) => `<img src="${c}" alt="" style="--i:${i}">`).join('')}</span><span data-split><em>work</em><sup>(${PROJECTS.length})</sup></span></h2>
-    <p>A selection of brand, print, digital and presentation work made in Dubai between 2024 and 2026.</p>
+    <p>${PROJECTS.length} projects, one rule: every page, post and sign should look like the same company made it.</p>
   </div>
   <ul class="cards">
 ${PROJECTS.map((p, i) => `    <li class="card" data-fade>
@@ -181,15 +181,16 @@ ${PROJECTS.map((p, i) => `    <li class="card" data-fade>
   <a class="feature-img" href="work/top-concept-website.html" data-cursor="View project" data-reveal>${img('top-concept-website', 'home', { sizes: '100vw', alt: 'Top Concept International website home page' })}</a>
   <div class="feature-text">
     <p class="kicker">New direction</p>
-    <h2 id="feature-h" data-split>Now designing <em>for the web</em></h2>
-    <p>The Top Concept International website is the first site I designed and built with Claude Code: a blueprint-to-render hero you can drag, a project archive, and a light and dark theme, in plain HTML, CSS and JavaScript.</p>
-    <p class="links"><a class="btn" href="work/top-concept-website.html">See the project</a> <a class="btn btn-ghost" href="https://cepsmyster.github.io/top-concept-website/" rel="noopener">Visit the live site</a></p>
+    <h2 id="feature-h" data-split>From print to <em>pixels</em></h2>
+    <p>My first website, designed and built with Claude Code. Drag one line and a blueprint turns into the finished tower.</p>
+    <p>Behind it: a project archive, light and dark themes, and nothing but HTML, CSS and JavaScript.</p>
+    <p class="links"><a class="btn" href="work/top-concept-website.html">See the case study</a> <a class="btn btn-ghost" href="https://cepsmyster.github.io/top-concept-website/" rel="noopener">Visit the live site</a></p>
   </div>
 </section>
 
 <section class="about" id="about" aria-labelledby="about-h">
   <p class="kicker">About</p>
-  <h2 id="about-h" class="about-big" data-split>I turn ideas into <em>brands</em>, <em>pages</em> and <em>places</em> people actually use.</h2>
+  <h2 id="about-h" class="about-big" data-split>One idea, held together on a <em>phone</em>, a <em>page</em> and a <em>building</em>.</h2>
   <div class="about-cols">
     <div class="about-text">
       ${ABOUT.intro.map(t => `<p>${esc(t)}</p>`).join('\n      ')}
@@ -268,7 +269,7 @@ const notFound = page({
   description: 'This page does not exist.',
   pre: '/',
   cls: 'nf',
-  body: `<section class="nf-body"><h1 data-split>Lost the <em>path</em></h1><p>The link may be old or mistyped. <a href="/">Go to the home page</a> to see all work.</p></section>`,
+  body: `<section class="nf-body"><h1 data-split>Lost the <em>path</em></h1><p>This link leads nowhere. <a href="/">Head back home</a> to see the work.</p></section>`,
 });
 fs.writeFileSync(path.join(ROOT, '404.html'), notFound);
 
