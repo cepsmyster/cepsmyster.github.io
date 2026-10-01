@@ -165,12 +165,45 @@ ul, ol { list-style: none; }
 .js .hn-word { transform: translateY(105%); transition: transform 1.3s var(--ease-out); }
 .js .hn-2 .hn-word { transition-delay: .12s; }
 .js .is-ready .hn-word { transform: none; }
-.hn-reel {
-  position: relative; flex: 1; align-self: stretch; margin: .1em 0 .06em .06em; overflow: hidden; background: var(--ink);
-  clip-path: inset(0 100% 0 0); transition: clip-path 1.2s var(--ease) .5s;
+.hn-ai {
+  position: relative; flex: 1; align-self: stretch; margin: .1em 0 .06em .06em; overflow: hidden;
+  display: flex; flex-direction: column; font: 400 11px/1.3 var(--sans); letter-spacing: 0; text-transform: none;
+  background: #323232; color: #d6d6d6; border-radius: 10px; box-shadow: 0 0 0 .5px rgba(0, 0, 0, .6), 0 20px 50px rgba(0, 0, 0, .25);
+  clip-path: inset(0 100% 0 0 round 10px); transition: clip-path 1.2s var(--ease) .5s;
 }
-.is-ready .hn-reel, html:not(.js) .hn-reel { clip-path: inset(0 0 0 0); }
-.hn-reel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: reel 16s infinite; animation-delay: calc(var(--i) * 2s); }
+.is-ready .hn-ai, html:not(.js) .hn-ai { clip-path: inset(0 0 0 0 round 10px); }
+.ai-bar { display: flex; align-items: center; gap: 7px; height: 28px; padding: 0 10px; background: #3c3c3c; border-bottom: 1px solid #1e1e1e; flex: none; }
+.ai-bar > i { width: 11px; height: 11px; border-radius: 50%; background: #ff5f57; }
+.ai-bar > i:nth-child(2) { background: #febc2e; }
+.ai-bar > i:nth-child(3) { background: #28c840; }
+.ai-tab { margin-left: 14px; padding: 4px 10px; background: #2a2a2a; border-radius: 5px 5px 0 0; color: #e6e6e6; font-size: 10.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ai-body { flex: 1; display: grid; grid-template-columns: 30px 1fr minmax(90px, 22%); min-height: 0; }
+.ai-tools { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px 0; background: #2d2d2d; border-right: 1px solid #1e1e1e; }
+.ai-tools svg { width: 20px; height: 20px; padding: 2px; color: #cfcfcf; border-radius: 3px; }
+.ai-tools svg.on { background: #4b4b4b; color: #fff; }
+.ai-swatch { position: relative; width: 22px; height: 22px; margin-top: auto; }
+.ai-swatch i { position: absolute; width: 14px; height: 14px; border: 1px solid #111; }
+.ai-swatch .f { left: 0; top: 0; background: #fff; z-index: 1; }
+.ai-swatch .s { right: 0; bottom: 0; background: transparent; box-shadow: inset 0 0 0 3px #2f5bff; }
+.ai-canvas { position: relative; background: #535353; display: grid; place-items: center; padding: 18px 14px 12px; min-width: 0; }
+.ai-ab-label { position: absolute; left: 14px; top: 3px; font-size: 10px; color: #c2c2c2; }
+.ai-artboard { width: 100%; height: 100%; background: #fff; box-shadow: 0 1px 4px rgba(0, 0, 0, .4); display: block; }
+.ai-artboard svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.ai-guide { fill: none; stroke: #2f5bff; stroke-width: 1; opacity: .25; }
+.ai-stroke { fill: none; stroke: #2f5bff; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.ai-handles line { stroke: #2f5bff; stroke-width: 1; }
+.ai-handles circle { fill: #2f5bff; }
+.ai-anchor { fill: #fff; stroke: #2f5bff; stroke-width: 1.5; }
+.ai-panel { background: #2d2d2d; border-left: 1px solid #1e1e1e; padding: 8px 8px; display: flex; flex-direction: column; gap: 6px; overflow: hidden; }
+.ai-panel b { font-weight: 600; color: #f0f0f0; font-size: 11px; padding-bottom: 4px; border-bottom: 1px solid #3d3d3d; }
+.ai-row { display: flex; align-items: center; justify-content: space-between; gap: 6px; color: #bdbdbd; font-size: 10px; white-space: nowrap; }
+.ai-row .ai-k { color: #e9e9e9; font-weight: 600; font-size: 10px; }
+.ai-row .ai-k .pen-ul { display: none; }
+.ai-field { background: #1f1f1f; border: 1px solid #3f3f3f; border-radius: 3px; padding: 1px 5px; color: #e5e5e5; }
+.ai-chip { width: 14px; height: 14px; border: 1px solid #111; background: #fff; display: inline-block; }
+.ai-chip.none { background: linear-gradient(to top right, #fff 45%, #e33 46%, #e33 54%, #fff 55%); }
+.ai-chip.blue { background: #2f5bff; }
+@media (max-width: 1100px) { .ai-panel { display: none; } .ai-body { grid-template-columns: 30px 1fr; } }
 @keyframes reel { 0% { opacity: 0; transform: scale(1.12); } 2% { opacity: 1; } 12.5% { opacity: 1; } 14.5% { opacity: 0; transform: scale(1); } 100% { opacity: 0; } }
 .hn-path { position: absolute; inset: 0; pointer-events: none; }
 .hn-path svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
@@ -195,7 +228,7 @@ ul, ol { list-style: none; }
   .hero-top { grid-template-columns: 1fr 1fr; }
   .hero-top p:nth-child(2) { display: none; }
   .hero-name { font-size: 27vw; }
-  .hn-reel { display: none; }
+  .hn-ai { display: none; }
   .hero-foot { flex-direction: column; align-items: flex-start; }
 }
 
@@ -221,13 +254,20 @@ ul, ol { list-style: none; }
 @keyframes tile-cycle { 0%, 30% { opacity: 1; } 25% { opacity: 1; } 32%, 100% { opacity: 0; } }
 .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0 4px; padding: 0 clamp(20px, 4vw, 80px); }
 .card { margin-bottom: 6vw; }
-.card a { display: flex; flex-direction: column; gap: 14px; }
+.card a { display: flex; flex-direction: column; gap: 8px; }
+.card-cap { margin-top: 8px; }
+.card-label { font: 400 11px/1 var(--sans); color: var(--muted); letter-spacing: 0; padding: 0 1px 2px; }
 .card-box {
-  position: relative; display: grid; place-items: center; overflow: hidden; border-radius: 6px;
-  aspect-ratio: 1.42; background: #e3e0d7; padding: 7%;
+  position: relative; display: grid; place-items: center; overflow: hidden; aspect-ratio: 1.42;
+  background: #2b2b2b; outline: 1px solid rgba(15, 15, 14, .12);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .08), 0 6px 18px rgba(0, 0, 0, .06);
 }
-.card-box img { width: 100%; height: 100%; object-fit: contain; transition: transform 1.2s var(--ease-out); }
-.card a:hover .card-box img { transform: scale(1.025); }
+/* Effect > Blur > Gaussian Blur: the same photo, blurred, fills whatever the full photo doesn't reach */
+.card-box .card-blur { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(26px) saturate(1.1); transform: scale(1.15); }
+.card-box img:not(.card-blur) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: transform 1.2s var(--ease-out); }
+.card a:hover .card-box img:not(.card-blur) { transform: scale(1.02); }
+.card a:hover .card-label { color: var(--accent); }
+.card a:hover .card-box { outline-color: var(--accent); }
 .card-cap { display: flex; align-items: baseline; gap: 12px; padding: 0 2px; }
 .card-no { font-size: 11px; color: var(--muted); letter-spacing: .08em; font-variant-numeric: tabular-nums; }
 .card-title { font-size: clamp(18px, 1.5vw, 26px); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; }
@@ -352,3 +392,21 @@ ul, ol { list-style: none; }
 
 /* Heavier underline strokes under the big headings */
 .sec-head em .pen-ul path, .about-big em .pen-ul path, .feature-text h2 em .pen-ul path, .foot-big em .pen-ul path, .nf-body em .pen-ul path { stroke-width: 5; }
+
+/* Mac Illustrator Effect menu on artboards that use the blur fill */
+.fx { position: absolute; left: 2.5%; top: 4%; z-index: 2; transform: scale(.7); display: flex; align-items: flex-start; font: 400 11px/1 -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif; letter-spacing: 0; color: #1d1d1f; pointer-events: none; transform-origin: 0 0; transition: opacity .5s var(--ease), transform .5s var(--ease-out); }
+.fx-menu {
+  display: flex; flex-direction: column; min-width: 190px; padding: 5px; border-radius: 7px;
+  background: rgba(246, 246, 246, .78); -webkit-backdrop-filter: blur(24px) saturate(180%); backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: 0 0 0 .5px rgba(0, 0, 0, .25), 0 10px 30px rgba(0, 0, 0, .28);
+}
+.fx-sub { min-width: 108px; margin: 174px 0 0 -4px; }
+.fx-i { position: relative; display: flex; justify-content: space-between; gap: 18px; padding: 3.5px 9px; border-radius: 4px; white-space: nowrap; }
+.fx-i kbd { font: inherit; color: rgba(0, 0, 0, .45); }
+.fx-i.sub::after { content: ''; width: 5px; height: 5px; border-right: 1.3px solid currentColor; border-top: 1.3px solid currentColor; transform: rotate(45deg); align-self: center; margin-right: 2px; opacity: .7; }
+.fx-i.on { background: #0a64d6; color: #fff; }
+.fx-h { padding: 4px 9px 2px; font-size: 10px; font-weight: 600; color: rgba(0, 0, 0, .4); }
+.fx-sep { height: 1px; margin: 4px 9px; background: rgba(0, 0, 0, .12); }
+.card a:hover .fx { opacity: 0; transform: scale(.66); }
+@media (max-width: 1300px) { .fx { transform: scale(.6); } }
+@media (max-width: 800px) { .fx { transform: scale(.55); } }

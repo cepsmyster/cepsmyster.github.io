@@ -119,6 +119,79 @@ const SHAPES = ['wide', 'big l', 'small r', 'small l', 'big r'];
 const TILE_SIZES = { wide: '(min-width: 800px) 62vw, 100vw', big: '(min-width: 800px) 45vw, 100vw', small: '(min-width: 800px) 30vw, 100vw' };
 const covers = PROJECTS.map(p => `assets/img/${p.slug}/${p.cover}-800.webp`);
 
+// A small Mac Illustrator window: the Pen tool drawing a path on Artboard 1, on a loop (SVG/SMIL).
+const AI_WINDOW = `
+<span class="ai-bar"><i></i><i></i><i></i><span class="ai-tab">Portfolio.ai @ 100 % (RGB/Preview)</span></span>
+<span class="ai-body">
+  <span class="ai-tools">
+    <svg viewBox="0 0 24 24"><path d="M7 3l11 10-5 .6 3 6-2 1-3-6-4 3z" fill="currentColor"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M7 3l11 10-5 .6 3 6-2 1-3-6-4 3z" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+    <svg viewBox="0 0 24 24" class="on"><path d="M5 19l3-9 6-6 6 6-6 6-9 3zM8 10l6 6M11.5 12.5a1.5 1.5 0 1 0 0 .1" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M5 5h14M12 5v15M9 20h6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+    <svg viewBox="0 0 24 24"><rect x="5" y="6" width="14" height="12" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M4 20c5-1 6-6 9-9l4-4 2 2-4 4c-3 3-8 4-11 7z" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M12 5v14" stroke="currentColor"/></svg>
+    <span class="ai-swatch"><i class="f"></i><i class="s"></i></span>
+  </span>
+  <span class="ai-canvas">
+    <span class="ai-ab-label">01 - Artboard 1</span>
+    <span class="ai-artboard">
+      <svg viewBox="0 0 400 250">
+        <path class="ai-guide" d="M40 190 C 90 40, 170 40, 200 125 S 310 210, 360 60"/>
+        <path class="ai-stroke" pathLength="1" d="M40 190 C 90 40, 170 40, 200 125 S 310 210, 360 60">
+          <animate attributeName="stroke-dashoffset" values="1;0;0" keyTimes="0;.55;1" dur="6s" repeatCount="indefinite"/>
+        </path>
+        <g class="ai-handles"><line x1="200" y1="125" x2="150" y2="50"/><line x1="200" y1="125" x2="250" y2="200"/><circle cx="150" cy="50" r="4"/><circle cx="250" cy="200" r="4"/>
+          <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;.25;.3;.9;1" dur="6s" repeatCount="indefinite"/></g>
+        <rect class="ai-anchor" x="35" y="185" width="10" height="10"><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.02;.9;1" dur="6s" repeatCount="indefinite"/></rect>
+        <rect class="ai-anchor" x="195" y="120" width="10" height="10"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;.27;.29;.9;1" dur="6s" repeatCount="indefinite"/></rect>
+        <rect class="ai-anchor" x="355" y="55" width="10" height="10"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;.54;.56;.9;1" dur="6s" repeatCount="indefinite"/></rect>
+        <g class="ai-pen">
+          <path d="M0 0 L9 23 L12.5 18 L18 22.5 L22.5 18 L18 12.5 L23 9 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/>
+          <animateMotion dur="6s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.55;1" calcMode="linear" path="M40 190 C 90 40, 170 40, 200 125 S 310 210, 360 60"/>
+        </g>
+      </svg>
+    </span>
+  </span>
+  <span class="ai-panel">
+    <b>Properties</b>
+    <span class="ai-row"><em class="ai-k">Transform</em></span>
+    <span class="ai-row"><span>X</span><span class="ai-field">402 px</span></span>
+    <span class="ai-row"><span>Y</span><span class="ai-field">125 px</span></span>
+    <span class="ai-row"><em class="ai-k">Appearance</em></span>
+    <span class="ai-row"><span>Fill</span><i class="ai-chip none"></i></span>
+    <span class="ai-row"><span>Stroke</span><i class="ai-chip blue"></i><span class="ai-field">2 pt</span></span>
+    <span class="ai-row"><span>Opacity</span><span class="ai-field">100 %</span></span>
+  </span>
+</span>`;
+
+// Mac Illustrator's Effect menu, opened on Blur > Gaussian Blur. Shown on cards whose
+// photo doesn't fill the artboard, where the blurred copy fills the rest.
+const CARD_RATIO = 1.42;
+const needsBlur = (slug, name) => { const z = SIZES[`${slug}/${name}`]; return Math.abs(z.w / z.h - CARD_RATIO) / CARD_RATIO > 0.04; };
+const EFFECT_MENU = `<span class="fx" aria-hidden="true"><span class="fx-menu">
+  <span class="fx-i">Apply Gaussian Blur<kbd>⇧⌘E</kbd></span>
+  <span class="fx-i">Gaussian Blur…<kbd>⌥⇧⌘E</kbd></span>
+  <span class="fx-sep"></span>
+  <span class="fx-i">Document Raster Effects Settings…</span>
+  <span class="fx-sep"></span>
+  <span class="fx-h">Illustrator Effects</span>
+  <span class="fx-i sub">3D and Materials</span>
+  <span class="fx-i sub">Distort &amp; Transform</span>
+  <span class="fx-i sub">Stylize</span>
+  <span class="fx-sep"></span>
+  <span class="fx-h">Photoshop Effects</span>
+  <span class="fx-i">Effect Gallery…</span>
+  <span class="fx-i sub">Artistic</span>
+  <span class="fx-i sub on">Blur</span>
+  <span class="fx-i sub">Brush Strokes</span>
+  <span class="fx-i sub">Distort</span>
+</span><span class="fx-menu fx-sub">
+  <span class="fx-i on">Gaussian Blur…</span>
+  <span class="fx-i">Radial Blur…</span>
+  <span class="fx-i">Smart Blur…</span>
+</span></span>`;
+
 const loader = `
 <div class="loader" aria-hidden="true">
   <div class="orbit">${covers.map((c, i) => `<img src="${c}" alt="" style="--i:${i}">`).join('')}</div>
@@ -141,7 +214,7 @@ const home = page({
     <p class="hero-avail"><i></i>Open to new projects</p>
   </div>
   <h1 class="hero-name" id="hero-name" aria-label="${SITE.name}">
-    <span class="hn-line hn-1" aria-hidden="true"><span class="hn-word">Carl</span><span class="hn-reel">${covers.slice(0, 8).map((c, i) => `<img src="${c}" alt="" style="--i:${i}">`).join('')}</span></span>
+    <span class="hn-line hn-1" aria-hidden="true"><span class="hn-word">Carl</span><span class="hn-ai" aria-hidden="true">${AI_WINDOW}</span></span>
     <span class="hn-line hn-2" aria-hidden="true"><span class="hn-word">Serafin</span></span>
     <span class="hn-path" aria-hidden="true">
       <svg viewBox="0 0 1000 400" preserveAspectRatio="none"><path d="M20 330 C 180 120, 330 380, 500 210 S 820 40, 980 150"/><line x1="500" y1="210" x2="390" y2="330"/><line x1="500" y1="210" x2="610" y2="90"/></svg>
@@ -165,7 +238,8 @@ const home = page({
   <ul class="cards">
 ${PROJECTS.map((p, i) => `    <li class="card" data-fade>
       <a href="work/${p.slug}.html" data-cursor="View project">
-        <span class="card-box">${img(p.slug, p.cover, { sizes: '(min-width: 800px) 46vw, 100vw', alt: '' })}</span>
+        <span class="card-label">${pad(i + 1)} - Artboard ${i + 1}</span>
+        <span class="card-box${needsBlur(p.slug, p.cover) ? ' has-blur' : ''}"><img class="card-blur" src="assets/img/${p.slug}/${p.cover}-800.webp" alt="" loading="lazy" decoding="async">${img(p.slug, p.cover, { sizes: '(min-width: 800px) 46vw, 100vw', alt: '' })}${needsBlur(p.slug, p.cover) ? EFFECT_MENU : ''}</span>
         <span class="card-cap">
           <span class="card-no">${pad(i + 1)}</span>
           <span class="card-title">${esc(p.title)}</span>

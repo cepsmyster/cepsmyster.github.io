@@ -49,7 +49,7 @@
   // colours, drawn in when it comes into view, with square anchor points at
   // both ends and handles that show on hover.
   var UL_COLOURS = ['#2f5bff', '#ff5a36', '#14b37d', '#f4b400'];
-  document.querySelectorAll('em').forEach(function (em, n) {
+  document.querySelectorAll('em:not(.ai-k)').forEach(function (em, n) {
     if (em.querySelector('.pen-ul')) return;
     var r = function (a, b) { return a + Math.random() * (b - a); };
     var y1 = r(9, 15), y2 = r(5, 13), c1x = r(18, 40), c1y = r(18, 26), c2x = r(55, 80), c2y = r(-6, 4);
@@ -65,7 +65,7 @@
     em.style.setProperty('--ul', UL_COLOURS[n % UL_COLOURS.length]);
     em.appendChild(ul);
   });
-  var ems = document.querySelectorAll('em');
+  var ems = document.querySelectorAll('em:not(.ai-k)');
   if ('IntersectionObserver' in window && !reduce) {
     var eio = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
