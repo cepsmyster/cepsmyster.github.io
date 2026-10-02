@@ -58,8 +58,8 @@ const header = pre => `
   <a class="top-name" href="${pre || './'}" data-scramble>Carl Serafin<sup>©</sup></a>
   <p class="top-role"><span>${SITE.role}</span><span>${SITE.city} <span class="clock" data-clock aria-label="Local time in Dubai"></span></span></p>
   <nav class="top-nav" aria-label="Main">
-    <a href="${pre}index.html#work" data-scramble>Work</a>
     <a href="${pre}index.html#about" data-scramble>About</a>
+    <a href="${pre}index.html#work" data-scramble>Work</a>
     <a href="${pre}index.html#contact" data-scramble>Contact</a>
   </nav>
 </header>`;
@@ -247,11 +247,29 @@ const home = page({
 
   <div class="desk-foot">
     <p class="hero-lead">I design <em>brands</em>, <em>company profiles</em> and <em>pitch decks</em> for the companies building Dubai. Now I build <em>websites</em> too.</p>
-    <div class="desk-meta"><p class="hero-avail"><i></i>Open to new projects</p><a class="hero-scroll" href="#work">Scroll <span>↓</span></a></div>
+    <div class="desk-meta"><p class="hero-avail"><i></i>Open to new projects</p><a class="hero-scroll" href="#about">Scroll <span>↓</span></a></div>
   </div>
 </section>
 
 <div class="marquee" aria-hidden="true"><div class="mq-track">${Array(2).fill(`<span>${ABOUT.fields.map(f => `<span class="mq-item">${appIcon(f)}${esc(f)}</span>`).join(' ')}</span>`).join('')}</div></div>
+
+<section class="about" id="about" aria-labelledby="about-h">
+  <p class="kicker">About</p>
+  <h2 id="about-h" class="about-big" data-split>One idea, held together on a <em>phone</em>, a <em>page</em> and a <em>building</em>.</h2>
+  <div class="about-cols">
+    <div class="about-text">
+      ${ABOUT.intro.map(t => `<p>${esc(t)}</p>`).join('\n      ')}
+    </div>
+    <ol class="services">
+      ${ABOUT.fields.map((f, i) => `<li><span>${pad(i + 1)}</span>${esc(f)}</li>`).join('\n      ')}
+    </ol>
+  </div>
+  <div class="about-lists">
+    <div><h3>Tools</h3><ul>${ABOUT.tools.map(f => `<li>${esc(f)}</li>`).join('')}</ul></div>
+    <div><h3>Clients</h3><ul>${[...new Set(PROJECTS.flatMap(p => p.client.split(', ')))].map(f => `<li>${esc(f)}</li>`).join('')}</ul></div>
+    <div><h3>Languages</h3><ul>${ABOUT.languages.map(f => `<li>${esc(f)}</li>`).join('')}</ul></div>
+  </div>
+</section>
 
 <section class="work" id="work" aria-labelledby="work-h">
   <div class="sec-head">
@@ -282,24 +300,6 @@ ${PROJECTS.map((p, i) => `    <li class="card" data-fade>
     <p>My first website, designed and built from scratch. Drag one line and a blueprint turns into the finished tower.</p>
     <p>Behind it: a project archive, light and dark themes, and nothing but HTML, CSS and JavaScript.</p>
     <p class="links"><a class="btn" href="work/top-concept-website.html">See the case study</a> <a class="btn btn-ghost" href="https://cepsmyster.github.io/top-concept-website/" rel="noopener">Visit the live site</a></p>
-  </div>
-</section>
-
-<section class="about" id="about" aria-labelledby="about-h">
-  <p class="kicker">About</p>
-  <h2 id="about-h" class="about-big" data-split>One idea, held together on a <em>phone</em>, a <em>page</em> and a <em>building</em>.</h2>
-  <div class="about-cols">
-    <div class="about-text">
-      ${ABOUT.intro.map(t => `<p>${esc(t)}</p>`).join('\n      ')}
-    </div>
-    <ol class="services">
-      ${ABOUT.fields.map((f, i) => `<li><span>${pad(i + 1)}</span>${esc(f)}</li>`).join('\n      ')}
-    </ol>
-  </div>
-  <div class="about-lists">
-    <div><h3>Tools</h3><ul>${ABOUT.tools.map(f => `<li>${esc(f)}</li>`).join('')}</ul></div>
-    <div><h3>Clients</h3><ul>${[...new Set(PROJECTS.flatMap(p => p.client.split(', ')))].map(f => `<li>${esc(f)}</li>`).join('')}</ul></div>
-    <div><h3>Languages</h3><ul>${ABOUT.languages.map(f => `<li>${esc(f)}</li>`).join('')}</ul></div>
   </div>
 </section>`,
 });
