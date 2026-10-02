@@ -279,8 +279,9 @@ ul, ol { list-style: none; }
 }
 
 /* ---------- Feature ---------- */
-.feature { margin-top: 34vh; display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); padding: 0 var(--edge); align-items: end; }
+.feature { margin-top: 34vh; display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); padding: 0 var(--edge) 34vh; align-items: end; }
 .feature-img { grid-column: 1 / 9; display: block; overflow: hidden; }
+.feature-img img { width: 100%; }
 .feature-text { grid-column: 9 / -1; display: grid; gap: 18px; }
 .feature-text h2 { font-size: clamp(38px, 4.4vw, 80px); line-height: 1; letter-spacing: -.04em; font-family: var(--display); font-weight: 200; font-optical-sizing: auto; }
 .feature-text p:not(.kicker) { color: var(--muted); max-width: 42ch; }
