@@ -28,8 +28,7 @@ const ui = n => ({ src: `${AV}/process_screenshots/${n}.png`, q: 86 });
 export const IMAGES = {
   'retail-park-archviz': {
     aerial: still('01_Masterplan_Aerial'), southeast: still('02_Aerial_South_East'), context: still('03_Context_Aerial_Highway'),
-    shopfronts: still('04_Spine_Shopfronts_Dust'), sandstorm: still('05_Main_Road_Sandstorm'),
-    promenade: still('06_Food_Truck_Promenade'), court: still('07_Market_Court_Sails'),
+    shopfronts: still('04_Spine_Shopfronts_Dust'),    promenade: still('06_Food_Truck_Promenade'), court: still('07_Market_Court_Sails'),
     courtraw: { src: `${AV}/renders/final/05_eye_level_market_court/beauty.png`, q: 86 },  // the Cycles beauty before Photoshop
     blendermassing: ui('01_blender_massing'), blendershading: ui('02_blender_shading'), photoshop: ui('03_photoshop_layers_grade'),
   },

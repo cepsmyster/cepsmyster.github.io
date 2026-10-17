@@ -17,13 +17,12 @@ const ALT = {
   'retail-park-archviz/southeast': 'Aerial of Retail Park from the south-east',
   'retail-park-archviz/context': 'Retail Park seen from across the highway, with dust on the horizon',
   'retail-park-archviz/shopfronts': 'Glazed shopfronts along the retail spine, backlit by a low sun through dust',
-  'retail-park-archviz/sandstorm': 'Retail Park from the main road during a sandstorm',
   'retail-park-archviz/promenade': 'Pink and white food-truck pods along the promenade, under shade trees',
   'retail-park-archviz/court': 'The sunken market court under coloured shade sails at golden hour',
   'retail-park-archviz/courtraw': 'The market court straight out of Blender, before Photoshop',
   'retail-park-archviz/blendermassing': 'Blender: the white massing model of Retail Park, with the Games hall selected and its dimensions in the sidebar',
   'retail-park-archviz/blendershading': 'Blender Shading workspace: the fluted paint node tree under a live Cycles render of the food-truck promenade',
-  'retail-park-archviz/photoshop': 'Photoshop: the layered sandstorm still, with the shared golden-hour grade group open and its contrast curve',
+  'retail-park-archviz/photoshop': 'Photoshop: the layered market court still, with the render elements group open and the bounce-light pass selected',
   home: 'Home page hero with the blueprint and render split by a draggable line',
   mobile: 'Home page on a phone', projects: 'Projects page hero', expertise: 'Expertise page',
   cover: 'Cover', divider: 'Section divider page', interiors: 'Interiors divider page', interiors2: 'Interiors divider page',
@@ -294,13 +293,13 @@ const home = page({
       <h2 id="show-h" class="show-title" data-split>A retail park, built from the <em>drawings</em></h2>
     </div>
     <div class="show-side">
-      <p>Seven 4K stills of Retail Park in Al Dhaid, Sharjah. Modelled in Blender, rendered in Cycles, finished in Photoshop.</p>
+      <p>4K stills of Retail Park in Al Dhaid, Sharjah. Modelled in Blender, rendered in Cycles, finished in Photoshop.</p>
       <p class="links"><a class="btn" href="work/${SHOW}.html">See the renders and the process</a></p>
     </div>
   </div>
   <a class="show-img" href="work/${SHOW}.html" data-cursor="View project" data-reveal>${img(SHOW, 'court', { sizes: '100vw' })}</a>
   <ul class="show-strip">
-    ${[['aerial', 'Masterplan aerial'], ['promenade', 'Food-truck promenade'], ['shopfronts', 'Shopfronts in the dust'], ['sandstorm', 'Sandstorm, from the main road']].map(([n, t]) => `<li><a href="work/${SHOW}.html" data-cursor="View project"><span class="show-thumb" data-reveal>${img(SHOW, n, { sizes: '(min-width: 800px) 22vw, 50vw', alt: '' })}</span><span class="show-cap">${t}</span></a></li>`).join('\n    ')}
+    ${[['aerial', 'Masterplan aerial'], ['promenade', 'Food-truck promenade'], ['shopfronts', 'Shopfronts in the dust'], ['southeast', 'Aerial from the south-east']].map(([n, t]) => `<li><a href="work/${SHOW}.html" data-cursor="View project"><span class="show-thumb" data-reveal>${img(SHOW, n, { sizes: '(min-width: 800px) 22vw, 50vw', alt: '' })}</span><span class="show-cap">${t}</span></a></li>`).join('\n    ')}
   </ul>
 </section>
 
