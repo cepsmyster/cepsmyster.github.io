@@ -358,5 +358,49 @@
  "daytona-properties/stories": {
   "w": 2400,
   "h": 1600
+ },
+ "retail-park-archviz/aerial": {
+  "w": 3840,
+  "h": 2160
+ },
+ "retail-park-archviz/southeast": {
+  "w": 3840,
+  "h": 2160
+ },
+ "retail-park-archviz/context": {
+  "w": 3840,
+  "h": 2160
+ },
+ "retail-park-archviz/shopfronts": {
+  "w": 3840,
+  "h": 2160
+ },
+ "retail-park-archviz/sandstorm": {
+  "w": 3840,
+  "h": 2160
+ },
+ "retail-park-archviz/promenade": {
+  "w": 3840,
+  "h": 2160
+ },
+ "retail-park-archviz/court": {
+  "w": 3840,
+  "h": 2160
+ },
+ "retail-park-archviz/courtraw": {
+  "w": 3840,
+  "h": 2160
+ },
+ "retail-park-archviz/blendermassing": {
+  "w": 2560,
+  "h": 1417
+ },
+ "retail-park-archviz/blendershading": {
+  "w": 2560,
+  "h": 1417
+ },
+ "retail-park-archviz/photoshop": {
+  "w": 2560,
+  "h": 1440
  }
 }

@@ -11,8 +11,19 @@ const VERSION = Date.now().toString(36);
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-// Plain descriptions for image alt text, keyed by image name.
+// Plain descriptions for image alt text, keyed by image name (or 'slug/name' for one project only).
 const ALT = {
+  'retail-park-archviz/aerial': 'Aerial of Retail Park from the south-west at golden hour, with the desert and palm farms behind',
+  'retail-park-archviz/southeast': 'Aerial of Retail Park from the south-east',
+  'retail-park-archviz/context': 'Retail Park seen from across the highway, with dust on the horizon',
+  'retail-park-archviz/shopfronts': 'Glazed shopfronts along the retail spine, backlit by a low sun through dust',
+  'retail-park-archviz/sandstorm': 'Retail Park from the main road during a sandstorm',
+  'retail-park-archviz/promenade': 'Pink and white food-truck pods along the promenade, under shade trees',
+  'retail-park-archviz/court': 'The sunken market court under coloured shade sails at golden hour',
+  'retail-park-archviz/courtraw': 'The market court straight out of Blender, before Photoshop',
+  'retail-park-archviz/blendermassing': 'Blender: the white massing model of Retail Park, with the Games hall selected and its dimensions in the sidebar',
+  'retail-park-archviz/blendershading': 'Blender Shading workspace: the fluted paint node tree under a live Cycles render of the food-truck promenade',
+  'retail-park-archviz/photoshop': 'Photoshop: the layered sandstorm still, with the shared golden-hour grade group open and its contrast curve',
   home: 'Home page hero with the blueprint and render split by a draggable line',
   mobile: 'Home page on a phone', projects: 'Projects page hero', expertise: 'Expertise page',
   cover: 'Cover', divider: 'Section divider page', interiors: 'Interiors divider page', interiors2: 'Interiors divider page',
@@ -40,7 +51,7 @@ function img(slug, name, { sizes = '100vw', eager = false, alt, cls = '' } = {},
   if (!s) throw new Error('missing image ' + key);
   const base = `${pre}assets/img/${slug}/${name}`;
   const w = Math.min(1600, s.w), h = Math.round(s.h * w / s.w);
-  return `<img${cls ? ` class="${cls}"` : ''} src="${base}-1600.webp" srcset="${base}-800.webp 800w, ${base}-1600.webp ${w}w" sizes="${sizes}" width="${w}" height="${h}" alt="${esc(alt ?? ALT[name] ?? '')}"${eager ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"'}>`;
+  return `<img${cls ? ` class="${cls}"` : ''} src="${base}-1600.webp" srcset="${base}-800.webp 800w, ${base}-1600.webp ${w}w" sizes="${sizes}" width="${w}" height="${h}" alt="${esc(alt ?? ALT[key] ?? ALT[name] ?? '')}"${eager ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"'}>`;
 }
 
 function video(name, ratio, pre) {
@@ -186,6 +197,7 @@ const AI_TYPE = `
 const APPS = {
   'Brand identity': 'ai', 'Signage': 'ai', 'Print and editorial': 'id', 'Presentations': 'id',
   'Social media': 'ps', 'Motion graphics': 'ae', 'Video editing': 'pr', 'Web design and development': 'figma',
+  '3D visualisation': 'cube',
 };
 const APP_TILE = {
   ai: ['Ai', '#330000', '#ff9a00'], id: ['Id', '#49021f', '#ff3366'], ps: ['Ps', '#001e36', '#31a8ff'],
@@ -193,14 +205,18 @@ const APP_TILE = {
 };
 const appIcon = field => {
   const k = APPS[field];
+  if (k === 'cube') return '<span class="mq-app mq-cube"><svg viewBox="0 0 24 24"><path d="M12 2.5l8.5 4.9v9.2L12 21.5l-8.5-4.9V7.4z M3.5 7.4L12 12.3l8.5-4.9 M12 12.3v9.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>';
   if (k === 'figma') return '<span class="mq-app mq-figma"><svg viewBox="0 0 38 57"><path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z" fill="#1abcfe"/><path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0z" fill="#0acf83"/><path d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19z" fill="#ff7262"/><path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z" fill="#f24e1e"/><path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z" fill="#a259ff"/></svg></span>';
   const [t, bg, fg] = APP_TILE[k];
   return `<span class="mq-app" style="--bg:${bg};--fg:${fg}">${t}</span>`;
 };
 
+// The featured project, shown large on the home page between About and the work grid.
+const SHOW = 'retail-park-archviz';
+
 const loader = `
 <div class="loader" aria-hidden="true">
-  <div class="orbit">${covers.map((c, i) => `<img src="${c}" alt="" style="--i:${i}">`).join('')}</div>
+  <div class="orbit" style="--n:${covers.length}">${covers.map((c, i) => `<img src="${c}" alt="" style="--i:${i}">`).join('')}</div>
   <p class="loader-name">Carl Serafin<sup>©</sup></p>
   <p class="loader-role">Portfolio 2024—2026</p>
   <p class="loader-count"><span data-count>0</span>%</p>
@@ -209,7 +225,7 @@ const loader = `
 const home = page({
   title: `${SITE.fullName}, graphic designer in Dubai`,
   description: SITE.description,
-  image: 'assets/img/top-concept-website/home-1600.webp',
+  image: 'assets/img/retail-park-archviz/aerial-1600.webp',
   cls: 'home',
   before: loader,
   body: `
@@ -271,6 +287,23 @@ const home = page({
   </div>
 </section>
 
+<section class="show" aria-labelledby="show-h">
+  <div class="show-head">
+    <div>
+      <p class="kicker">Featured project, 3D visualisation</p>
+      <h2 id="show-h" class="show-title" data-split>A retail park, built from the <em>drawings</em></h2>
+    </div>
+    <div class="show-side">
+      <p>Seven 4K stills of Retail Park in Al Dhaid, Sharjah. Modelled in Blender, rendered in Cycles, finished in Photoshop.</p>
+      <p class="links"><a class="btn" href="work/${SHOW}.html">See the renders and the process</a></p>
+    </div>
+  </div>
+  <a class="show-img" href="work/${SHOW}.html" data-cursor="View project" data-reveal>${img(SHOW, 'court', { sizes: '100vw' })}</a>
+  <ul class="show-strip">
+    ${[['aerial', 'Masterplan aerial'], ['promenade', 'Food-truck promenade'], ['shopfronts', 'Shopfronts in the dust'], ['sandstorm', 'Sandstorm, from the main road']].map(([n, t]) => `<li><a href="work/${SHOW}.html" data-cursor="View project"><span class="show-thumb" data-reveal>${img(SHOW, n, { sizes: '(min-width: 800px) 22vw, 50vw', alt: '' })}</span><span class="show-cap">${t}</span></a></li>`).join('\n    ')}
+  </ul>
+</section>
+
 <section class="work" id="work" aria-labelledby="work-h">
   <div class="sec-head">
     <h2 id="work-h" class="work-title"><span data-split>Selected</span><span data-split><em>work</em><sup>(${PROJECTS.length})</sup></span></h2>
@@ -307,6 +340,13 @@ ${PROJECTS.map((p, i) => `    <li class="card" data-fade>
 // ---------- Project pages ----------
 function rowHtml(p, row) {
   const pre = '../';
+  if (row.heading) return `<div class="row-head"><p class="kicker">Process</p><h2 data-split>${esc(row.heading)}</h2>${row.text ? `<p>${esc(row.text)}</p>` : ''}</div>`;
+  if (row.compare) {
+    // Before/after: the "after" image sets the size; the "before" sits on top, clipped at --x.
+    const [a, b] = row.compare, [la, lb] = row.labels || ['Before', 'After'];
+    return `<div class="row"><figure class="compare" data-reveal data-cursor="Drag" style="--x:50%">${img(p.slug, b, { sizes: '100vw' }, pre)}<span class="cmp-before">${img(p.slug, a, { sizes: '100vw' }, pre)}</span><span class="cmp-line" aria-hidden="true"><i></i></span><span class="cmp-label cmp-l" aria-hidden="true">${esc(la)}</span><span class="cmp-label cmp-r" aria-hidden="true">${esc(lb)}</span><input class="cmp-range" type="range" min="0" max="100" value="50" aria-label="Slide between ${esc(la.toLowerCase())} and ${esc(lb.toLowerCase())}"></figure></div>`;
+  }
+  if (row.step) return `<div class="step"><div class="step-cap"><p class="step-no">${esc(row.step)}<span>${esc(row.app)}</span></p><h3>${esc(row.title)}</h3><p>${esc(row.text)}</p></div><figure data-reveal>${img(p.slug, row.img, { sizes: '(min-width: 900px) 64vw, 100vw' }, pre)}</figure></div>`;
   const cell = (r, sizes) => typeof r === 'object' && r.video
     ? `<figure data-reveal>${video(r.video, r.ratio, pre)}</figure>`
     : `<figure data-reveal>${img(p.slug, r, { sizes }, pre)}</figure>`;

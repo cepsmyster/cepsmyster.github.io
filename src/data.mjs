@@ -3,6 +3,9 @@
 //   'name'            one full-width image
 //   ['a', 'b']        two images side by side
 //   { video, poster, ratio }   a looping muted clip
+//   { heading, text }          a small section heading between the images
+//   { compare: ['before', 'after'], labels: ['…', '…'] }   a before/after slider
+//   { step, app, title, text, img }   a numbered process step: caption beside a screenshot
 // Image names refer to assets/img/<slug>/<name>-<width>.webp (made by src/images.mjs).
 
 export const SITE = {
@@ -15,7 +18,7 @@ export const SITE = {
   whatsappLink: 'https://wa.me/971551502722',
   behance: 'https://www.behance.net/carlserafin',
   url: 'https://cepsmyster.github.io/',
-  description: 'Carl Paolo Serafin is a Dubai graphic designer making brand identities, company profiles, campaigns, presentations and websites for architecture, construction and real estate companies.',
+  description: 'Carl Paolo Serafin is a Dubai graphic designer making brand identities, company profiles, campaigns, presentations, 3D visualisations and websites for architecture, construction and real estate companies.',
 };
 
 export const ABOUT = {
@@ -25,12 +28,37 @@ export const ABOUT = {
     'Lately I’ve been designing and building websites. The Top Concept International site was the first. I learn by shipping real pages for real clients.',
     'New team, new brief, tight deadline? I adapt fast. My favourite projects are the ones where one idea has to work on a phone screen, a printed page and a sign on a building.',
   ],
-  fields: ['Brand identity', 'Print and editorial', 'Social media', 'Signage', 'Presentations', 'Motion graphics', 'Video editing', 'Web design and development'],
-  tools: ['Illustrator', 'Photoshop', 'InDesign', 'After Effects', 'Premiere Pro', 'Figma', 'HTML, CSS and JavaScript'],
+  fields: ['Brand identity', 'Print and editorial', 'Social media', 'Signage', 'Presentations', '3D visualisation', 'Motion graphics', 'Video editing', 'Web design and development'],
+  tools: ['Illustrator', 'Photoshop', 'InDesign', 'After Effects', 'Premiere Pro', 'Blender', 'Figma', 'HTML, CSS and JavaScript'],
   languages: ['Filipino', 'English'],
 };
 
 export const PROJECTS = [
+  {
+    slug: 'retail-park-archviz',
+    title: 'Architectural visualisation of a retail park in the desert',
+    client: 'Top Concept International',
+    field: '3D visualisation, post-production',
+    sector: 'Retail and leisure',
+    year: '2026',
+    cover: 'aerial',
+    summary: 'Seven 4K stills of Retail Park in Al Dhaid, Sharjah: modelled in Blender from the drawings, rendered in Cycles and finished in Photoshop.',
+    body: [
+      'Retail Park sits on the edge of Al Dhaid, an oasis town in the Sharjah desert. The model follows the drawings: footprints traced from the site setting-out plan, heights from the sections, every finish from the material schedule. Around it lie 16 km of desert, with roads, palm farms and about 140,000 scattered trees and shrubs.',
+      'Each still is rendered in Cycles with a full set of render elements, then built up in a layered 16-bit Photoshop file. One golden-hour grade runs through all seven, so the set reads as a single shoot.',
+    ],
+    rows: [
+      'court', ['shopfronts', 'promenade'], 'sandstorm', ['southeast', 'context'],
+      { heading: 'Behind the render', text: 'Blender for the model, the materials and the light. Photoshop for the render elements and the grade.' },
+      { compare: ['courtraw', 'court'], labels: ['Blender render', 'After Photoshop'] },
+      { step: '01', app: 'Blender', title: 'The model, from the drawings', img: 'blendermassing',
+        text: 'Footprints traced from the site setting-out plan, heights from the sections. The Games hall is 35.8 by 30.9 metres, and 9.15 metres from the sunken court to the parapet.' },
+      { step: '02', app: 'Blender', title: 'Materials, light and the render', img: 'blendershading',
+        text: 'Every finish in the material schedule is a shader node tree, like the Games hall’s fluted paint with a flute every 0.3 metres. Photoscanned trees, a low sun from the west-north-west, and Cycles at 4K on the graphics card.' },
+      { step: '03', app: 'Photoshop', title: 'Render elements and one shared grade', img: 'photoshop',
+        text: 'Ambient occlusion, bounce light, reflections and self-illumination sit over the beauty pass, masked by ID passes, with haze from the depth pass. The sky and the blowing dust are generated plates. The same golden-hour grade finishes all seven stills.' },
+    ],
+  },
   {
     slug: 'top-concept-website',
     title: 'Website for an architecture and engineering consultancy',

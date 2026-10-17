@@ -343,6 +343,30 @@
     raf(draw);
   }
 
+  // ---------- Before/after slider ----------
+  // Drag anywhere on the image to move the line; the hidden range input
+  // keeps it usable from the keyboard.
+  document.querySelectorAll('.compare').forEach(function (c) {
+    var range = c.querySelector('.cmp-range'), dragging = false;
+    var set = function (v) {
+      v = Math.max(0, Math.min(100, v));
+      c.style.setProperty('--x', v.toFixed(2) + '%');
+      range.value = Math.round(v);
+    };
+    var at = function (e) { var r = c.getBoundingClientRect(); set((e.clientX - r.left) / r.width * 100); };
+    range.addEventListener('input', function () { set(+range.value); });
+    c.addEventListener('pointerdown', function (e) {
+      if (e.button !== 0) return;
+      dragging = true;
+      try { c.setPointerCapture(e.pointerId); } catch (err) {}
+      at(e);
+    });
+    c.addEventListener('pointermove', function (e) { if (dragging) at(e); });
+    var stop = function () { dragging = false; };
+    c.addEventListener('pointerup', stop);
+    c.addEventListener('pointercancel', stop);
+  });
+
   // ---------- Videos play only while on screen, always muted ----------
   var clips = document.querySelectorAll('video[data-autoplay]');
   if (clips.length && 'IntersectionObserver' in window) {

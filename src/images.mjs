@@ -3,13 +3,15 @@
 // so this only needs to run again when artwork is added or changed.
 //   SRC_BE   Behance "source" downloads      SRC_WORK  Desktop/Work folder
 //   SRC_PDF  PDF pages rendered at 2000px    (see README)
+//   SRC_3D   the Retail Park ArchViz folder (Blender/Retail Park 3D/ArchViz)
+//   ONLY     optional project slug: redo just that project and keep the rest of images.json
 // Output: assets/img/<project>/<name>-<w>.webp  +  src/images.json (sizes for width/height attributes)
 import sharp from 'sharp';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const BE = process.env.SRC_BE, WORK = process.env.SRC_WORK, PDF = process.env.SRC_PDF;
+const BE = process.env.SRC_BE, WORK = process.env.SRC_WORK, PDF = process.env.SRC_PDF, AV = process.env.SRC_3D, ONLY = process.env.ONLY;
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'assets/img');
 const WIDTHS = [800, 1600];
@@ -19,8 +21,18 @@ const be = (n, crop, dw = 1400) => ({ src: `${BE}/243935583_${n}.jpg`, crop, dw 
 const hb = n => ({ src: `${BE}/244797281_${n}.jpg` });
 const pdf = n => ({ src: `${PDF}/${n}.png` });
 const tci = n => ({ src: `${WORK}/Company Profiles/TCI Company Profile Jpeg/${n}.jpg` });
+// Renders get a higher quality so the haze and sky gradients don't band.
+const still = n => ({ src: `${AV}/final/RP_${n}.jpg`, q: 86 });
+const ui = n => ({ src: `${AV}/process_screenshots/${n}.png`, q: 86 });
 
 export const IMAGES = {
+  'retail-park-archviz': {
+    aerial: still('01_Masterplan_Aerial'), southeast: still('02_Aerial_South_East'), context: still('03_Context_Aerial_Highway'),
+    shopfronts: still('04_Spine_Shopfronts_Dust'), sandstorm: still('05_Main_Road_Sandstorm'),
+    promenade: still('06_Food_Truck_Promenade'), court: still('07_Market_Court_Sails'),
+    courtraw: { src: `${AV}/renders/final/05_eye_level_market_court/beauty.png`, q: 86 },  // the Cycles beauty before Photoshop
+    blendermassing: ui('01_blender_massing'), blendershading: ui('02_blender_shading'), photoshop: ui('03_photoshop_layers_grade'),
+  },
   'top-concept-website': {
     home: pdf('web-desk'), mobile: pdf('web-mob'), projects: pdf('web-proj'), expertise: pdf('web-exp'),
   },
@@ -85,8 +97,10 @@ export const IMAGES = {
   },
 };
 
-const manifest = {};
+const MANIFEST = path.join(ROOT, 'src/images.json');
+const manifest = ONLY ? JSON.parse(fs.readFileSync(MANIFEST, 'utf8')) : {};
 for (const [project, imgs] of Object.entries(IMAGES)) {
+  if (ONLY && project !== ONLY) continue;
   fs.mkdirSync(path.join(OUT, project), { recursive: true });
   for (const [name, def] of Object.entries(imgs)) {
     let img = sharp(def.src, { failOn: 'none', limitInputPixels: false });
@@ -101,11 +115,11 @@ for (const [project, imgs] of Object.entries(IMAGES)) {
     const { width, height } = await sharp(buf).metadata();
     for (const w of WIDTHS) {
       await sharp(buf).resize({ width: Math.min(w, width), withoutEnlargement: true })
-        .webp({ quality: 78 }).toFile(path.join(OUT, project, `${name}-${w}.webp`));
+        .webp({ quality: def.q || 78 }).toFile(path.join(OUT, project, `${name}-${w}.webp`));
     }
     manifest[`${project}/${name}`] = { w: width, h: height };
     process.stdout.write('.');
   }
 }
-fs.writeFileSync(path.join(ROOT, 'src/images.json'), JSON.stringify(manifest, null, 1));
+fs.writeFileSync(MANIFEST, JSON.stringify(manifest, null, 1));
 console.log('\n', Object.keys(manifest).length, 'images');
