@@ -398,5 +398,9 @@
  "retail-park-archviz/photoshop": {
   "w": 2560,
   "h": 1440
+ },
+ "retail-park-archviz/blenderpasses": {
+  "w": 2560,
+  "h": 1417
  }
 }

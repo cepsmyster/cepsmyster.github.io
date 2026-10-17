@@ -22,6 +22,7 @@ const ALT = {
   'retail-park-archviz/courtraw': 'The market court straight out of Blender, before Photoshop',
   'retail-park-archviz/blendermassing': 'Blender: the white massing model of Retail Park, with the Games hall selected and its dimensions in the sidebar',
   'retail-park-archviz/blendershading': 'Blender Shading workspace: the fluted paint node tree under a live Cycles render of the food-truck promenade',
+  'retail-park-archviz/blenderpasses': 'Blender Compositing workspace: the bounce-light pass of the market court, the view layer passes and the node graph that writes each render element',
   'retail-park-archviz/photoshop': 'Photoshop: the layered market court still, with the shared golden-hour grade group open and its contrast curve',
   home: 'Home page hero with the blueprint and render split by a draggable line',
   mobile: 'Home page on a phone', projects: 'Projects page hero', expertise: 'Expertise page',
