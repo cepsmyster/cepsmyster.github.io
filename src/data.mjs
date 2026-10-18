@@ -17,7 +17,7 @@ export const SITE = {
   whatsapp: '+971 55 150 2722',
   whatsappLink: 'https://wa.me/971551502722',
   behance: 'https://www.behance.net/carlserafin',
-  url: 'https://carl.design/',
+  url: 'https://carl-design.vercel.app/',
   description: 'Carl Paolo Serafin is a Dubai graphic designer making brand identities, company profiles, campaigns, presentations, 3D visualisations and websites for architecture, construction and real estate companies.',
 };
 

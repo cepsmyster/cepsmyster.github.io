@@ -2,8 +2,6 @@
 
 Live on Vercel: **https://carl-design.vercel.app/**
 
-Custom domain: **https://carl.design/** (attached to Vercel; DNS update pending).
-
 A static site (plain HTML, CSS and JavaScript, no framework), configured for Vercel.
 The previous GitHub Pages address is https://cepsmyster.github.io/.
 
@@ -15,17 +13,8 @@ Pushes to `main` deploy automatically. For a manual production deployment, run `
 The build copies only the generated pages, assets and sitemap into that directory.
 Local archives, original artwork, source files and dependencies are excluded from the published website.
 
-`carl.design` is already attached to the project. Its DNS currently uses GoDaddy.
-Vercel's recommended apex records, checked on 19 October 2026, are:
-
-| Type | Name | Value |
-| --- | --- | --- |
-| A | @ | 216.198.79.1 |
-| A | @ | 64.29.17.1 |
-
-Replace the existing apex A records (`3.33.130.190` and `15.197.148.33`) with those values.
-Preserve unrelated records, including email records. Re-check Vercel's Domains settings
-or run `npx vercel domains verify carl.design --scope me-ccf5` after the update.
+The public address `carl-design.vercel.app` is provided by Vercel and needs no custom domain
+purchase or DNS setup. `SITE.url` in `src/data.mjs` sets the sitemap and social preview URLs.
 
 ## Edit content
 
