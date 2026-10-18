@@ -383,10 +383,6 @@
   "w": 3840,
   "h": 2160
  },
- "retail-park-archviz/courtraw": {
-  "w": 3840,
-  "h": 2160
- },
  "retail-park-archviz/blendermassing": {
   "w": 2560,
   "h": 1417
@@ -402,5 +398,9 @@
  "retail-park-archviz/blenderpasses": {
   "w": 2560,
   "h": 1417
+ },
+ "retail-park-archviz/massing": {
+  "w": 1920,
+  "h": 1080
  }
 }

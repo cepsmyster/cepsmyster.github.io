@@ -29,7 +29,8 @@ export const IMAGES = {
   'retail-park-archviz': {
     aerial: still('01_Masterplan_Aerial'), southeast: still('02_Aerial_South_East'), context: still('03_Context_Aerial_Highway'),
     shopfronts: still('04_Spine_Shopfronts_Dust'),    promenade: still('06_Food_Truck_Promenade'), court: still('07_Market_Court_Sails'),
-    courtraw: { src: `${AV}/renders/final/05_eye_level_market_court/beauty.png`, q: 86 },  // the Cycles beauty before Photoshop
+    // The white massing model from the masterplan aerial's camera (rendered for the Top Concept site; pairs with `aerial`).
+    massing: { src: path.join(ROOT, '../Top Concept Website/site/assets/img/rp-massing.webp'), q: 86 },
     blendermassing: ui('01_blender_massing'), blendershading: ui('02_blender_shading'), blenderpasses: ui('04_blender_render_passes'), photoshop: ui('03_photoshop_layers_grade'),
   },
   'top-concept-website': {

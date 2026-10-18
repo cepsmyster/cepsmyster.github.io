@@ -50,7 +50,7 @@ export const PROJECTS = [
     rows: [
       'court', ['shopfronts', 'promenade'], ['southeast', 'context'],
       { heading: 'Behind the render', text: 'Blender for the model, the materials and the light. Photoshop for the render elements and the grade.' },
-      { compare: ['courtraw', 'court'], labels: ['Blender render', 'After Photoshop'] },
+      { compare: ['massing', 'aerial'], labels: ['Massing', 'Render'] },
       { step: '01', app: 'Blender', title: 'The model, from the drawings', img: 'blendermassing',
         text: 'Footprints traced from the site setting-out plan, heights from the sections. The Games hall is 35.8 by 30.9 metres, and 9.15 metres from the sunken court to the parapet.' },
       { step: '02', app: 'Blender', title: 'Materials, light and the render', img: 'blendershading',

@@ -19,7 +19,7 @@ const ALT = {
   'retail-park-archviz/shopfronts': 'Glazed shopfronts along the retail spine, backlit by a low sun through dust',
   'retail-park-archviz/promenade': 'Pink and white food-truck pods along the promenade, under shade trees',
   'retail-park-archviz/court': 'The sunken market court under coloured shade sails at golden hour',
-  'retail-park-archviz/courtraw': 'The market court straight out of Blender, before Photoshop',
+  'retail-park-archviz/massing': 'The white massing model of Retail Park in its desert setting, from the same camera as the masterplan aerial',
   'retail-park-archviz/blendermassing': 'Blender: the white massing model of Retail Park, with the Games hall selected and its dimensions in the sidebar',
   'retail-park-archviz/blendershading': 'Blender Shading workspace: the fluted paint node tree under a live Cycles render of the food-truck promenade',
   'retail-park-archviz/blenderpasses': 'Blender Compositing workspace: the bounce-light pass of the market court, the view layer passes and the node graph that writes each render element',
@@ -298,9 +298,9 @@ const home = page({
       <p class="links"><a class="btn" href="work/${SHOW}.html">See the renders and the process</a></p>
     </div>
   </div>
-  <a class="show-img" href="work/${SHOW}.html" data-cursor="View project" data-reveal>${img(SHOW, 'court', { sizes: '100vw' })}</a>
+  <a class="show-img" href="work/${SHOW}.html" data-cursor="View project" data-reveal>${img(SHOW, 'aerial', { sizes: '100vw' })}</a>
   <ul class="show-strip">
-    ${[['aerial', 'Masterplan aerial'], ['promenade', 'Food-truck promenade'], ['shopfronts', 'Shopfronts in the dust'], ['southeast', 'Aerial from the south-east']].map(([n, t]) => `<li><a href="work/${SHOW}.html" data-cursor="View project"><span class="show-thumb" data-reveal>${img(SHOW, n, { sizes: '(min-width: 800px) 22vw, 50vw', alt: '' })}</span><span class="show-cap">${t}</span></a></li>`).join('\n    ')}
+    ${[['court', 'Market court under the sails'],['promenade', 'Food-truck promenade'], ['shopfronts', 'Shopfronts in the dust'], ['southeast', 'Aerial from the south-east']].map(([n, t]) => `<li><a href="work/${SHOW}.html" data-cursor="View project"><span class="show-thumb" data-reveal>${img(SHOW, n, { sizes: '(min-width: 800px) 22vw, 50vw', alt: '' })}</span><span class="show-cap">${t}</span></a></li>`).join('\n    ')}
   </ul>
 </section>
 
