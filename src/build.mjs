@@ -400,7 +400,7 @@ PROJECTS.forEach((p, i) => {
 
 fs.writeFileSync(path.join(ROOT, 'index.html'), home);
 
-// 404 uses absolute paths so it works from any depth on GitHub Pages.
+// 404 uses absolute paths so it works from any URL depth.
 const notFound = page({
   title: `Page not found, ${SITE.fullName}`,
   description: 'This page does not exist.',

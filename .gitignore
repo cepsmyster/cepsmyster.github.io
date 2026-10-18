@@ -1,2 +1,5 @@
 node_modules/
 behance/
+dist/
+.vercel/
+.env*

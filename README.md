@@ -1,8 +1,31 @@
 # Carl Serafin — portfolio
 
-Live: **https://cepsmyster.github.io/**
+Live on Vercel: **https://carl-design.vercel.app/**
 
-A static site (plain HTML, CSS and JavaScript, no framework) hosted on GitHub Pages.
+Custom domain: **https://carl.design/** (attached to Vercel; DNS update pending).
+
+A static site (plain HTML, CSS and JavaScript, no framework), configured for Vercel.
+The previous GitHub Pages address is https://cepsmyster.github.io/.
+
+## Deploy to Vercel
+
+The Vercel project `me-ccf5/carl-design` is connected to `cepsmyster/cepsmyster.github.io`.
+Pushes to `main` deploy automatically. For a manual production deployment, run `npx vercel --prod`.
+`vercel.json` selects the Other framework preset, runs `npm run build`, and serves `dist/`.
+The build copies only the generated pages, assets and sitemap into that directory.
+Local archives, original artwork, source files and dependencies are excluded from the published website.
+
+`carl.design` is already attached to the project. Its DNS currently uses GoDaddy.
+Vercel's recommended apex records, checked on 19 October 2026, are:
+
+| Type | Name | Value |
+| --- | --- | --- |
+| A | @ | 216.198.79.1 |
+| A | @ | 64.29.17.1 |
+
+Replace the existing apex A records (`3.33.130.190` and `15.197.148.33`) with those values.
+Preserve unrelated records, including email records. Re-check Vercel's Domains settings
+or run `npx vercel domains verify carl.design --scope me-ccf5` after the update.
 
 ## Edit content
 
@@ -19,7 +42,8 @@ After editing, rebuild the pages:
 node src/build.mjs
 ```
 
-then commit and push. GitHub Pages updates within a minute or two.
+then commit and push. When the repository is connected to Vercel, pushes to the production branch
+trigger a new deployment. Run `npm run build` to check the complete Vercel output locally.
 
 ## Add or change images
 
