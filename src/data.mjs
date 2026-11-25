@@ -69,11 +69,11 @@ export const PROJECTS = [
     sector: 'Architecture and engineering',
     year: '2026',
     cover: 'home',
-    link: { href: 'https://cepsmyster.github.io/top-concept-website/', label: 'Visit the live site' },
+    link: { href: 'https://topconcept.gitlab.io/', label: 'Visit the live site' },
     summary: 'My first website, designed and built for Top Concept International, an architecture and engineering consultancy in Dubai.',
     body: [
       'Drag the line on the home page and a blueprint becomes the finished tower. The headline draws itself in outline, then fills in: concept to completion, in one gesture.',
-      'Behind it: a filterable archive with a page for every project, expertise, blogs, careers and contact forms, in light and dark themes. Plain HTML, CSS and JavaScript, hosted on GitHub Pages.',
+      'Behind it: a filterable archive with a page for every project, expertise, blogs, careers and contact forms, in light and dark themes. Plain HTML, CSS and JavaScript, hosted on GitLab Pages.',
     ],
     rows: ['home', ['mobile', 'projects'], 'expertise'],
   },

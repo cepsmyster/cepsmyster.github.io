@@ -332,7 +332,7 @@ ${PROJECTS.map((p, i) => `    <li class="card" data-fade>
     <h2 id="feature-h" data-split>From print to <em>pixels</em></h2>
     <p>My first website, designed and built from scratch. Drag one line and a blueprint turns into the finished tower.</p>
     <p>Behind it: a project archive, light and dark themes, and nothing but HTML, CSS and JavaScript.</p>
-    <p class="links"><a class="btn" href="work/top-concept-website.html">See the case study</a> <a class="btn btn-ghost" href="https://cepsmyster.github.io/top-concept-website/" rel="noopener">Visit the live site</a></p>
+    <p class="links"><a class="btn" href="work/top-concept-website.html">See the case study</a> <a class="btn btn-ghost" href="https://topconcept.gitlab.io/" rel="noopener">Visit the live site</a></p>
   </div>
 </section>`,
 });
